@@ -1,0 +1,318 @@
+   .image_container {
+      position: relative;
+      width: 100%;
+      // max-width: 900px;
+      margin: auto;
+      overflow: hidden;
+   }
+
+   .image_container img {
+      width: 100%;
+      height: auto;
+      display: block;
+   }
+
+   .white-cover {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(255, 255, 255, 0.5);
+      /* white shade with 50% opacity */
+      // z-index: 1;
+   }
+
+   /* Centered content */
+   .image_container h1,
+   .image_container .btn-book {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      color: #003B73;
+      text-align: center;
+      font-family: 'Segoe UI', sans-serif;
+   }
+
+   .image_container h1 {
+      top: 40%;
+      font-size: 2rem;
+      padding: 0 20px;
+   }
+
+   .btn-book {
+      top: 60%;
+      background-color: #007BFF;
+      /* Blue */
+      color: white !important;
+      border: none;
+      padding: 12px 30px;
+      font-size: 1rem;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: 0.3s;
+   }
+
+   .btn-book:hover {
+      background-color: #0056b3;
+   }
+
+
+   .row {
+      height: 350px;
+   }
+
+   .row1 {
+      height: 200px;
+   }
+
+   // .col4 {
+   //    background-color: #894fb9;
+   // }
+   .book_container {
+      background-color: #67b0ff4d;
+   }
+
+   .book_container h2 {
+
+      font-family: Poppins;
+      text-shadow: 2px 2px 2px white;
+   }
+
+   .Dining_container {
+      background-color: #f4f8ff;
+
+   }
+
+   .sidetext2 {
+      padding-left: 50px;
+   }
+
+   .Dining_container h2 {
+      font-family: Poppins;
+      text-shadow: 2px 2px 2px white;
+   }
+
+   .event_container h2 {
+      font-family: Poppins;
+   }
+
+   // .col4{
+   //    margin: ;
+   // }
+   .col5 {
+      background-color: aliceblue;
+   }
+
+   .carousel-item img {
+      height: 400px;
+      /* You can change this value */
+      object-fit: cover;
+   }
+
+   .slide_box h1 {
+      text-align: center;
+      margin-bottom: 30px;
+      font-weight: 200;
+      font-family: popins;
+   }
+
+   // .img-set{
+   //    height: 350px;
+   //    width:439px;
+   //    background-size: cover;
+   //    background-repeat: no-repeat;
+
+   // }
+   .card {
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      cursor: pointer;
+   }
+
+   .card:hover {
+      transform: scale(1.03);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+      z-index: 1;
+   }
+
+   .img3 {
+      height: 294px;
+   }
+
+   .center_text {
+      padding-top: 60px;
+      margin: 0;
+      text-align: center;
+   }
+
+   .modal-content {
+      padding: 0 !important;
+      /* removes all internal padding */
+   }
+
+   .modal-body {
+      padding: 0.5rem 1rem !important;
+      /* reduce or adjust as needed */
+   }
+
+   .modal-header,
+   .modal-footer {
+      padding: 0.5rem 1rem !important;
+      /* optional: reduce header/footer padding */
+   }
+
+   .form-control {
+      margin-bottom: 10px;
+      /* keeps spacing between inputs */
+   }
+
+
+
+   // .h1 {
+   //    color: #007BFF;
+   // }
+   .h1 {
+      color: #007BFF;
+      font-weight: 700;
+      border: 3px solid white;
+      padding: 20px 40px;
+      border-radius: 12px;
+      background: rgba(255, 255, 255, 0.15);
+      box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
+      user-select: none;
+      text-align: center;
+      letter-spacing: 3px;
+      transition: transform 0.3s ease;
+      cursor: default;
+   }
+
+
+   .h1:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 30px white;
+   }
+
+   .center_text p {
+      font-size: 40px;
+   }
+
+   .p_text {
+      display: block;
+      margin-right: auto;
+      margin-left: auto;
+      text-align: center !important;
+      font-size: 20px !important;
+      width: 60%;
+   }
+
+   body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f4f8ff;
+      padding: 40px;
+      display: flex;
+      justify-content: center;
+   }
+
+   .booking-form {
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+      position: relative;
+      background-color: white;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      padding: 30px;
+      max-width: 500px;
+      width: 100%;
+   }
+
+   .booking-form h2 {
+      color: #007BFF;
+      margin-bottom: 20px;
+      text-align: center;
+   }
+
+   .form-group {
+      margin-bottom: 15px;
+   }
+
+   .form-group label {
+      display: block;
+      color: #333;
+      margin-bottom: 5px;
+   }
+
+   .form-group input,
+   .form-group select {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 1rem;
+   }
+
+   .form-group input:focus,
+   .form-group select:focus {
+      border-color: #007BFF;
+      outline: none;
+   }
+
+   .btn-submit {
+      background-color: #007BFF;
+      color: white;
+      border: none;
+      padding: 12px;
+      font-size: 1rem;
+      border-radius: 5px;
+      cursor: pointer;
+      width: 100%;
+      margin-top: 15px;
+   }
+
+   .btn-submit:hover {
+      background-color: #0056b3;
+   }
+
+   @media only screen and (max-width :425px) {
+      .image_container h1 {
+         top: 30%;
+         font-size: 12px;
+         width: 80%;
+         // padding: 0 20px;
+      }
+
+      .btn-book {
+         top: 60%;
+         background-color: #007BFF;
+         /* Blue */
+         color: white !important;
+         border: none;
+         padding: 5px 7px;
+         font-size: 10px;
+         border-radius: 8px;
+         cursor: pointer;
+         transition: 0.3s;
+      }
+
+      .center_text {
+         padding-top: 10px !important;
+      }
+
+      .h1 {
+         font-size: 20px;
+      }
+
+      .center_text p {
+         font-size: 15px;
+      }
+
+      .p_text {
+         display: block;
+         margin-right: auto;
+         margin-left: auto;
+         text-align: center !important;
+         font-size: 15px !important;
+         width: 80%;
+      }
+
+   }
