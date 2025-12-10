@@ -3,7 +3,7 @@
   <div class="white-cover"></div>
 
   <h1>Effortless Hotel Management, Exceptional Guest Experience.</h1>
-  <button class="btn-book" data-toggle="modal" data-target="#exampleModalCenter">Book Now</button>
+  <button class="btn-book" data-toggle="modal" data-target="#exampleModalCenter" (click)="AddBooking()">Book Now</button>
 </div>
 
 
@@ -33,7 +33,7 @@
   </div> -->
 
   <div class="card-group">
-    <div class="card col-md-3  me-4 mb-4">
+    <div class="card col-md-3 mb-4">
       <img src="image\reception.png" class="card-img-top" alt="...">
       <div class="card-body">
         <h5 class="card-title text-primary"> Room booking</h5>
@@ -43,7 +43,7 @@
       </div>
     </div>
 
-    <div class="card col-md-3 me-4 mb-4">
+    <div class="card col-md-3 mb-4">
       <img src="image\table.png" class="card-img-top" alt="...">
       <div class="card-body">
         <h5 class="card-title text-primary">Restaurant / Dining</h5>
@@ -80,7 +80,7 @@
             <li>Affordable prices with great offers</li>
             <li>Easy online booking and instant confirmation</li>
           </ul>
-          <button class="btn-book" data-toggle="modal" data-target="#exampleModalCenter">Book Now</button>
+        
         </div>
 
         <!-- Image -->
@@ -111,7 +111,6 @@
           <li>Traditional and international dishes</li>
           <li>Comfortable seating with elegant decor</li>
         </ul>
-        <a href="#" class="btn btn-primary">Explore Menu</a>
       </div>
     </div>
   </div>
@@ -132,7 +131,6 @@
           <li>Customizable décor and catering options</li>
           <li>Professional event planning assistance</li>
         </ul>
-        <a href="#" class="btn btn-primary">Book Your Event</a>
       </div>
 
       <!-- Image -->
@@ -206,21 +204,21 @@
       </p>
       <!-- Trigger Button -->
       <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#contactModal">
-        Contact Us
+       <a class="con_link" href="contact_us">Contact Us</a> 
       </button>
 
       <!-- Modal -->
-      <div class="modal fade" id="contactModal" tabindex="-1" aria-labelledby="contactModalLabel" aria-hidden="true">
+      <!-- <div class="modal fade" id="contactModal" tabindex="-1" aria-labelledby="contactModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg">
           <div class="modal-content">
 
-            <!-- Modal Header -->
+           
             <div class="modal-header">
               <h5 class="modal-title" id="contactModalLabel">Contact Us</h5>
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
 
-            <!-- Modal Body with Form -->
+            
             <div class="modal-body">
               <form>
                 <div class="mb-3">
@@ -235,7 +233,7 @@
               </form>
             </div>
 
-            <!-- Modal Footer -->
+            
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
               <button type="submit" class="btn btn-primary">Send Message</button>
@@ -243,7 +241,7 @@
 
           </div>
         </div>
-      </div>
+      </div> -->
 
 
     </div>
@@ -262,83 +260,126 @@
 
 
 <!-- Modal -->
-<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
-  aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered" role="document">
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
       <div class="modal-header">
-
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
+
       <div class="modal-body">
-        <form class="booking-form" [formGroup]="bookingForm">
+        <form [formGroup]="bookingForm" (ngSubmit)="AddBooking()">
           <h2>Book Your Stay</h2>
 
+          <!-- Full Name -->
           <div class="form-group">
-            <label for="fullname">Full Name</label>
-            <input type="text" id="fullname" formControlName="fullname" name="fullname" required>
+            <label>Full Name</label>
+            <input type="text" formControlName="fullname" class="form-control"
+              [ngClass]="{ 'is-invalid': submitted && f.fullname.errors }" />
+            <div *ngIf="submitted && f.fullname.errors" class="invalid-feedback">
+              <div *ngIf="f.fullname.errors['required']">Full name is required</div>
+              <div *ngIf="f.fullname.errors['minlength']">At least 3 characters required</div>
+              <div *ngIf="f.fullname.errors['pattern']">Only letters allowed</div>
+            </div>
           </div>
 
+          <!-- Email -->
           <div class="form-group">
-            <label for="email">Email Address</label>
-            <input type="email" id="email" formControlName="email" name="email" required>
+            <label>Email</label>
+            <input type="email" formControlName="email" class="form-control"
+              [ngClass]="{ 'is-invalid': submitted && f.email.errors }" />
+            <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+              <div *ngIf="f.email.errors['required']">Email is required</div>
+              <div *ngIf="f.email.errors['email']">Enter a valid email</div>
+            </div>
           </div>
 
+          <!-- Phone -->
           <div class="form-group">
-            <label for="phone">Phone Number</label>
-            <input type="tel" id="phone" formControlName="phone" name="phone" required>
+            <label>Phone</label>
+            <input type="tel" formControlName="phone" class="form-control"
+              [ngClass]="{ 'is-invalid': submitted && f.phone.errors }" />
+            <div *ngIf="submitted && f.phone.errors" class="invalid-feedback">
+              <div *ngIf="f.phone.errors['required']">Phone is required</div>
+              <div *ngIf="f.phone.errors['pattern']">Enter a valid 10-digit number</div>
+            </div>
           </div>
 
+          <!-- Check-in -->
           <div class="form-group">
-            <label for="checkin">Check-in Date</label>
-            <input type="date" id="checkin" formControlName="checkindate"  name="checkin" required>
+            <label>Check-in Date</label>
+            <input type="date" formControlName="checkindate" class="form-control"
+              [ngClass]="{ 'is-invalid': submitted && f.checkindate.errors }" />
+            <div *ngIf="submitted && f.checkindate.errors" class="invalid-feedback">
+              <div *ngIf="f.checkindate.errors['required']">Check-in date is required</div>
+            </div>
           </div>
 
+          <!-- Check-out -->
           <div class="form-group">
-            <label for="checkout">Check-out Date</label>
-            <input type="date" id="checkout" formControlName="checkoutdate" name="checkout" required>
+            <label>Check-out Date</label>
+            <input type="date" formControlName="checkoutdate" class="form-control"
+              [ngClass]="{ 'is-invalid': submitted && f.checkoutdate.errors }" />
+            <div *ngIf="submitted && f.checkoutdate.errors" class="invalid-feedback">
+              <div *ngIf="f.checkoutdate.errors['required']">Check-out date is required</div>
+              <div *ngIf="f.checkoutdate.errors['dateAfterCheckin']">Must be after check-in</div>
+            </div>
           </div>
 
+          <!-- Guests -->
           <div class="form-group">
-            <label for="guests">Number of Guests</label>
-            <select id="guests" name="guests" formControlName="guests"  required>
+            <label>Guests</label>
+            <select formControlName="guests" class="form-control"
+              [ngClass]="{ 'is-invalid': submitted && f.guests.errors }">
               <option value="">Select</option>
               <option value="1">1 Guest</option>
               <option value="2">2 Guests</option>
               <option value="3">3 Guests</option>
               <option value="4+">4 or more</option>
             </select>
+            <div *ngIf="submitted && f.guests.errors" class="invalid-feedback">
+              Guests selection is required
+            </div>
           </div>
 
-             <div class="form-group">
-            <label for="hotelName">Hotel</label>
-            <select id="hotelName" name="hotelName" formControlName="hotelName"  required>
-              <option value="">Select</option>
-              <option value="1">1 Guest</option>
-              <option value="2">2 Guests</option>
-              <option value="3">3 Guests</option>
-              <option value="4+">4 or more</option>
-            </select>
-          </div>
-
+          <!-- Hotel -->
           <div class="form-group">
-            <label for="room">Room Type</label>
-            <select id="room" name="room" formControlName="room" required>
-              <option value="">Select</option>
-              <option value="single">Single Room</option>
-              <option value="double">Double Room</option>
-              <option value="suite">Suite</option>
-            </select>
+            <label>Select Hotel</label>
+            <input type="text" formControlName="hotelName" (input)="filterHotels()" list="hotelList"
+              class="form-control" [ngClass]="{ 'is-invalid': submitted && f.hotelName.errors }" />
+            <datalist id="hotelList">
+              <option *ngFor="let hotel of filteredHotels" [value]="hotel"></option>
+            </datalist>
+            <div *ngIf="submitted && f.hotelName.errors" class="invalid-feedback">
+              Hotel selection is required
+            </div>
           </div>
 
-          <button type="submit" class="btn-submit" (click)="AddBooking()">Confirm Booking</button>
+          <!-- Room -->
+          <div class="form-group">
+            <label>Room Type</label>
+            <select formControlName="room" class="form-control"
+              [ngClass]="{ 'is-invalid': submitted && f.room.errors }">
+              <option value="">Select</option>
+              <option value="Single Room">Single Room</option>
+              <option value="Double Room">Double Room</option>
+              <option value="Deluxe Room">Deluxe Room</option>
+              <option value="Suite">Suite</option>
+            </select>
+            <div *ngIf="submitted && f.room.errors" class="invalid-feedback">
+              Room type is required
+            </div>
+          </div>
+          <div *ngIf="successMessage" class="alert alert-success alert-dismissible fade show" role="alert">
+            {{ successMessage }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+          </div>
+
+          <!-- Submit -->
+          <button type="submit" class="btn btn-primary w-100">Confirm Booking</button>
         </form>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary close" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
       </div>
     </div>
   </div>

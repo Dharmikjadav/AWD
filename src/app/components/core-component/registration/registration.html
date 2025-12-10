@@ -1,59 +1,61 @@
- 
-  <div class="popup-overlay">
-  <div class="popup-content">
-   
-    <form class="booking-form">
-    <h2>Book Your Stay</h2>
+<div class="register-container mt-4 mb-4">
+  <div class="card register-card p-4">
+    <a class="navbar-brand logo text-primary fw-bold text-center mb-3" href="#">Saffron Stays</a>
+    <h2 class="text-center mb-3">Register</h2>
 
-    <div class="form-group">
-      <label for="fullname">Full Name</label>
-      <input type="text" id="fullname" name="fullname" required>
-    </div>
+    <form [formGroup]="registrationForm" (ngSubmit)="onSubmit()">
 
-    <div class="form-group">
-      <label for="email">Email Address</label>
-      <input type="email" id="email" name="email" required>
-    </div>
+      <div class="mb-3">
+        <label class="form-label">Full Name</label>
+        <input type="text" formControlName="fullname" class="form-control" required/>
+        <div class="text-danger" *ngIf="submitted && f['fullname'].errors">
+          <small *ngIf="f['fullname'].errors['required']">Full name is required</small>
+          <small *ngIf="f['fullname'].errors['minlength']">At least 3 characters</small>
+          <small *ngIf="f['fullname'].errors['pattern']">Only letters allowed</small>
+        </div>
+      </div>
 
-    <div class="form-group">
-      <label for="phone">Phone Number</label>
-      <input type="tel" id="phone" name="phone" required>
-    </div>
 
-    <div class="form-group">
-      <label for="checkin">Check-in Date</label>
-      <input type="date" id="checkin" name="checkin" required>
-    </div>
+      <div class="mb-3">
+        <label class="form-label">Email</label>
+        <input type="email" formControlName="email" class="form-control" required/>
+        <div class="text-danger" *ngIf="submitted && f['email'].errors">
+          <small *ngIf="f['email'].errors['required']">Email is required</small>
+          <small *ngIf="f['email'].errors['email']">Enter a valid email</small>
+        </div>
+      </div>
 
-    <div class="form-group">
-      <label for="checkout">Check-out Date</label>
-      <input type="date" id="checkout" name="checkout" required>
-    </div>
 
-    <div class="form-group">
-      <label for="guests">Number of Guests</label>
-      <select id="guests" name="guests" required>
-        <option value="">Select</option>
-        <option value="1">1 Guest</option>
-        <option value="2">2 Guests</option>
-        <option value="3">3 Guests</option>
-        <option value="4+">4 or more</option>
-      </select>
-    </div>
+      <div class="mb-3">
+        <label class="form-label">Phone</label>
+        <input type="text" formControlName="phone" class="form-control" required/>
+        <div class="text-danger" *ngIf="submitted && f['phone'].errors">
+          <small *ngIf="f['phone'].errors['required']">Phone is required</small>
+          <small *ngIf="f['phone'].errors['pattern']">Must be 10 digits</small>
+        </div>
+      </div>
 
-    <div class="form-group">
-      <label for="room">Room Type</label>
-      <select id="room" name="room" required>
-        <option value="">Select</option>
-        <option value="single">Single Room</option>
-        <option value="double">Double Room</option>
-        <option value="suite">Suite</option>
-      </select>
-    </div>
 
-    <button type="submit" class="btn-submit">Confirm Booking</button>
-  </form> 
+      <div class="mb-3">
+        <label class="form-label">Password</label>
+        <input type="password" formControlName="password" class="form-control" required/>
+        <div class="text-danger" *ngIf="submitted && f['password'].errors">
+          <small *ngIf="f['password'].errors['required']">Password is required</small>
+          <small *ngIf="f['password'].errors['minlength']">At least 6 characters</small>
+        </div>
+      </div>
 
-    <button (click)="closePopup()">Close</button>
+
+      <div class="mb-3">
+        <label class="form-label">Confirm Password</label>
+        <input type="password" formControlName="confirmPassword" class="form-control" required/>
+        <div class="text-danger" *ngIf="submitted && registrationForm.errors?.['mismatch']">
+          <small>Passwords do not match</small>
+        </div>
+      </div>
+
+      <button type="submit" class="btn btn-primary w-100">Register</button>
+      <div class="pt-3">Already have an Acoount ?<a href="user-login">Sign in</a></div>
+    </form>
   </div>
 </div>

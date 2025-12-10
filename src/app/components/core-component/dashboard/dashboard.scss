@@ -273,6 +273,12 @@
       background-color: #0056b3;
    }
 
+     .con_link{
+         text-decoration: none;
+         color: #f4f8ff;
+      }
+
+
    @media only screen and (max-width :425px) {
       .image_container h1 {
          top: 30%;
@@ -306,6 +312,7 @@
          font-size: 15px;
       }
 
+    
       .p_text {
          display: block;
          margin-right: auto;
@@ -315,4 +322,415 @@
          width: 80%;
       }
 
+      .card {
+         padding: 0% !important;
+      }
+
+   }
+
+   @media only screen and (max-width: 991.98px) {
+      .book_container .row {
+         min-height: auto;
+         padding: 2rem 0;
+      }
+
+      .book_container h2 {
+         font-size: 2.2rem;
+         text-align: center;
+      }
+
+      .book_container p {
+         font-size: 1rem;
+         text-align: center;
+      }
+
+      .book_container ul {
+         text-align: center;
+         margin-bottom: 2rem;
+      }
+
+      .btn-book {
+         display: block;
+         margin: 0 auto;
+         width: 200px;
+      }
+
+      .col4:first-child {
+         margin-bottom: 2rem;
+      }
+   }
+
+   /* Mobile styles (576px to 767px) */
+   @media (max-width: 767.98px) {
+      .book_container {
+         min-height: auto;
+         padding: 2rem 0;
+      }
+
+      .book_container .container {
+         padding: 0 20px;
+      }
+
+      .col4 {
+         padding: 15px;
+      }
+
+      .book_container h2 {
+         font-size: 1.8rem;
+         margin-bottom: 1rem;
+      }
+
+      .book_container p {
+         font-size: 0.95rem;
+         margin-bottom: 1.5rem;
+      }
+
+      .book_container ul li {
+         font-size: 0.9rem;
+         margin-bottom: 0.6rem;
+      }
+
+      .btn-book {
+         padding: 12px 25px;
+         font-size: 1rem;
+         width: 100%;
+         max-width: 250px;
+      }
+
+      .book_container img {
+         margin-top: 1rem;
+         border-radius: 10px;
+      }
+
+      @media (max-width: 767.98px) {
+
+         .Dining_container,
+         .event_container {
+            padding: 30px 0;
+         }
+
+         .Dining_container .container,
+         .event_container .container {
+            padding: 0 20px;
+         }
+
+         .col4 {
+            padding: 15px;
+         }
+
+         .sidetext2 {
+            padding-left: 15px;
+            margin-top: 1.5rem;
+         }
+
+         .sidetext2 h2,
+         .event_container h2 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+         }
+
+         .sidetext2 p,
+         .event_container p {
+            font-size: 1rem;
+            margin-bottom: 1.5rem;
+            text-align: center;
+         }
+
+         .sidetext2 ul li,
+         .event_container ul li {
+            font-size: 0.95rem;
+            margin-bottom: 0.8rem;
+            padding-left: 1.8rem;
+         }
+
+         .sidetext2 ul li::before,
+         .event_container ul li::before {
+            font-size: 1.1rem;
+         }
+
+         .btn-primary {
+            padding: 12px 25px;
+            font-size: 1rem;
+            width: 100%;
+            max-width: 250px;
+         }
+
+         .Dining_container img,
+         .event_container img {
+            max-height: 250px;
+            margin-bottom: 1rem;
+         }
+      }
+   }
+
+   /* Small mobile styles (up to 575px) */
+   @media (max-width: 575.98px) {
+      .book_container .container {
+         padding: 0 15px;
+      }
+
+      .col4 {
+         padding: 10px;
+      }
+
+      .book_container h2 {
+         font-size: 1.6rem;
+         margin-bottom: 0.8rem;
+      }
+
+      .book_container p {
+         font-size: 0.9rem;
+         margin-bottom: 1.2rem;
+      }
+
+      .book_container ul {
+         margin-bottom: 1.5rem;
+      }
+
+      .book_container ul li {
+         font-size: 0.85rem;
+         padding-left: 1.2rem;
+      }
+
+      .book_container ul li::before {
+         font-size: 1rem;
+      }
+
+      .btn-book {
+         padding: 10px 20px;
+         font-size: 0.9rem;
+         width: 100%;
+      }
+
+
+      .Dining_container,
+      .event_container {
+         padding: 20px 0;
+      }
+
+      .Dining_container .container,
+      .event_container .container {
+         padding: 0 15px;
+      }
+
+      .col4 {
+         padding: 10px;
+      }
+
+      .sidetext2 {
+         padding-left: 10px;
+         margin-top: 1rem;
+      }
+
+      .sidetext2 h2,
+      .event_container h2 {
+         font-size: 1.7rem;
+         margin-bottom: 0.8rem;
+      }
+
+      .sidetext2 p,
+      .event_container p {
+         font-size: 0.9rem;
+         margin-bottom: 1.2rem;
+         line-height: 1.6;
+      }
+
+      .sidetext2 ul,
+      .event_container ul {
+         margin-bottom: 1.5rem;
+         max-width: 100%;
+      }
+
+      .sidetext2 ul li,
+      .event_container ul li {
+         font-size: 0.85rem;
+         padding-left: 1.5rem;
+         margin-bottom: 0.6rem;
+      }
+
+      .sidetext2 ul li::before,
+      .event_container ul li::before {
+         font-size: 1rem;
+      }
+
+      .btn-primary {
+         padding: 10px 20px;
+         font-size: 0.9rem;
+         width: 100%;
+      }
+
+      .Dining_container img,
+      .event_container img {
+         max-height: 200px;
+         border-radius: 15px;
+      }
+
+   }
+
+   /* Extra small devices (320px to 479px) */
+   @media (max-width: 479.98px) {
+      .book_container h2 {
+         font-size: 1.4rem;
+      }
+
+      .book_container p {
+         font-size: 0.85rem;
+         line-height: 1.5;
+      }
+
+      .book_container ul li {
+         font-size: 0.8rem;
+      }
+
+      .btn-book {
+         padding: 8px 16px;
+         font-size: 0.85rem;
+      }
+   }
+
+   /* Landscape orientation adjustments for mobile */
+   @media (max-height: 500px) and (orientation: landscape) {
+      .book_container {
+         min-height: auto;
+         padding: 1rem 0;
+      }
+
+      .book_container .row {
+         min-height: auto;
+      }
+
+      .col4 {
+         padding: 10px;
+      }
+
+      .book_container h2 {
+         font-size: 1.5rem;
+         margin-bottom: 0.5rem;
+      }
+
+      .book_container p {
+         margin-bottom: 1rem;
+      }
+
+      .book_container ul {
+         margin-bottom: 1rem;
+      }
+
+      .sidetext2 h2,
+      .event_container h2 {
+         font-size: 1.5rem;
+      }
+
+      .sidetext2 p,
+      .event_container p {
+         font-size: 0.85rem;
+         line-height: 1.5;
+      }
+
+      .sidetext2 ul li,
+      .event_container ul li {
+         font-size: 0.8rem;
+      }
+
+      .btn-primary {
+         padding: 8px 16px;
+         font-size: 0.85rem;
+      }
+
+      .Dining_container img,
+      .event_container img {
+         max-height: 180px;
+      }
+   }
+
+
+   /* High DPI displays */
+   @media (-webkit-min-device-pixel-ratio: 2),
+   (min-resolution: 192dpi) {
+      .book_container img {
+         image-rendering: -webkit-optimize-contrast;
+         image-rendering: crisp-edges;
+      }
+
+      .Dining_container img,
+      .event_container img {
+         image-rendering: -webkit-optimize-contrast;
+         image-rendering: crisp-edges;
+      }
+   }
+
+   /* Print styles */
+   @media print {
+      .book_container {
+         background: white !important;
+         color: black !important;
+      }
+
+      .btn-book {
+         display: none;
+      }
+
+      .book_container img {
+         box-shadow: none;
+      }
+
+      .Dining_container,
+      .event_container {
+         background: white !important;
+         color: black !important;
+      }
+
+      .Dining_container::before,
+      .event_container::before {
+         display: none;
+      }
+
+      .btn-primary {
+         display: none;
+      }
+
+      .Dining_container img,
+      .event_container img {
+         box-shadow: none;
+      }
+
+      .sidetext2 h2,
+      .event_container h2 {
+         color: black !important;
+         text-shadow: none;
+      }
+
+      .sidetext2 p,
+      .event_container p {
+         color: black !important;
+      }
+
+      .sidetext2 ul li,
+      .event_container ul li {
+         color: black !important;
+      }
+   }
+
+   /* ===========================================
+   ACCESSIBILITY IMPROVEMENTS
+   =========================================== */
+
+   @media (prefers-reduced-motion: reduce) {
+
+      .Dining_container img,
+      .event_container img,
+      .btn-primary,
+      .sidetext2 ul li,
+      .event_container ul li {
+         transition: none;
+      }
+
+      .Dining_container img:hover,
+      .event_container img:hover {
+         transform: none;
+      }
+
+      .btn-primary:hover {
+         transform: none;
+      }
    }

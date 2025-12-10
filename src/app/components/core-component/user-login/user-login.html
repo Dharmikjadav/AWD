@@ -1,0 +1,19 @@
+ <div class="login-container">
+    <div class="card login-card p-4">
+      <a class="navbar-brand logo text-primary fw-bold text-center mb-3" href="#">Saffron Stays</a>
+
+      <h3 class="text-center mb-4">Login</h3>
+      <form (ngSubmit)="login()" #loginForm="ngForm">
+        <div class="mb-3">
+          <label for="email" class="form-label">Email address</label>
+          <input type="email" class="form-control" id="email" name="email" [(ngModel)]="email" placeholder="Enter your email" required>
+        </div>
+        <div class="mb-3">
+          <label for="password" class="form-label">Password</label>
+          <input type="password" class="form-control" id="password" name="password" [(ngModel)]="password" placeholder="Enter your password" required>
+        </div>
+        <button type="submit" class="btn btn-custom w-100">Login</button>
+        <div class="pt-3">No Account?<a  href="registarion-form">Register</a></div>
+      </form>
+    </div>
+  </div>

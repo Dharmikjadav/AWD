@@ -12,18 +12,18 @@
     <!-- Contact Form -->
     <div class="col-md-7 form-container">
       <h3>Send Us a Message</h3>
-      <form>
+      <form [formGroup]="ContactUs"  (ngSubmit)="contectus()">
         <div class="mb-3">
           <label for="name" class="form-label">Full Name</label>
-          <input type="text" class="form-control" id="name" placeholder="Your name">
+          <input type="text" formControlName="fullname" class="form-control" id="name" placeholder="Your name">
         </div>
         <div class="mb-3">
           <label for="email" class="form-label">Email address</label>
-          <input type="email" class="form-control" id="email" placeholder="name@example.com">
+          <input type="email" class="form-control" formControlName="email" id="email" placeholder="name@example.com">
         </div>
         <div class="mb-3">
           <label for="message" class="form-label">Message</label>
-          <textarea class="form-control" id="message" rows="4" placeholder="Your message..."></textarea>
+          <textarea class="form-control" id="message" formControlName="message" rows="4" placeholder="Your message..."></textarea>
         </div>
         <button type="submit" class="btn btn-primary">Send Message</button>
       </form>

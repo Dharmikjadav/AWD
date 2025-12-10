@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+declare var bootstrap: any;
 
 @Component({
   selector: 'app-hotels',
@@ -10,6 +11,8 @@ import { FormsModule } from '@angular/forms';
 })
 export class Hotels {
   searchTerm: string = '';
+  selectedHotel: any = null;
+  
 
   hotels = [
     { name: 'Urban Palace', location: 'Hyderabad', image: 'image/image7.jpg' },
@@ -29,4 +32,11 @@ export class Hotels {
       hotel.name.toLowerCase().includes(this.searchTerm.toLowerCase())
     );
   }
+  openModal(hotel: any) {
+  this.selectedHotel = hotel;
+
+  const modalEl = document.getElementById('hotelDetailModal');
+  const modal = bootstrap.Modal.getOrCreateInstance(modalEl);
+  modal.show();
+}
 }
