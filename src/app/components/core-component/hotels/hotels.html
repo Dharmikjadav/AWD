@@ -1,49 +1,139 @@
-<div class="container my-4">
-  <h2 class="mb-4 text-center">Explore Hotels</h2>
-  <input type="text" class="form-control mb-4" placeholder="Search for a hotel..." [(ngModel)]="searchTerm" />
-</div>
-
-<!-- Hotels Grid -->
-<div class="container pb-5">
-  <div class="row" id="hotelList">
-
-    <div class="col-md-4 mb-4 hotel-card-container" *ngFor="let hotel of filteredHotels ">
-      <div class="hotel-card card">
-        <img src="{{hotel.image}}" class="card-img-top" />
-        <div class="card-body">
-          <h5 class="card-title">{{hotel.name}}</h5>
-          <p class="card-text">{{hotel.location}}</p>
-          <div class="rating mb-2">
-            <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
-            <i class="bi bi-star-fill"></i><i class="bi bi-star-half"></i>
-            <i class="bi bi-star"></i>
-          </div>
-          <button class="btn btn-primary" (click)="openModal(hotel)">View Details</button>
-        </div>
-      </div>
-    </div>
-
+<!-- ============================================
+     HERO SECTION
+     ============================================ -->
+<div class="hero-section">
+  <img src="image/hotel_hero.png" alt="Luxury Wedding Venues">
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <span class="hero-badge animate-fade-down">✦ Saffron Stays Venues</span>
+    <h1 class="animate-fade-up">Luxury Venues for Your<br>Grand Celebration</h1>
+    <p class="hero-subtitle animate-fade-up delay-2">Discover handpicked premium hotels for a wedding that feels truly
+      royal.</p>
   </div>
 </div>
 
-<div class="modal fade" id="hotelDetailModal" tabindex="-1" aria-labelledby="hotelDetailModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-lg modal-dialog-centered">
-    <div class="modal-content">
-      <div class="modal-body d-flex p-0">
-        <!-- Image Side -->
-        <div class="col-md-6 p-3">
-          <img [src]="selectedHotel?.image" class="img-fluid w-100" alt="Hotel Image" />
+<div class="container section-padding">
+
+  <h2 class="mb-4 text-center heading">Explore Hotels</h2>
+  <input type="text" class="form-control mb-4" placeholder="Search for a hotel..." [(ngModel)]="searchTerm" />
+
+
+  <!-- Hotels Grid -->
+  @if(!isloading) {
+  <div class=" pb-5">
+    <div class="row" id="hotelList">
+
+      @for (hotel of filteredHotels ; let idx = $index;track hotel ; ){
+      <div class="col-md-4 mb-4 hotel-card-container">
+        <div class=" hotel-card card">
+          <img [src]="hotel.image_url || 'assets/no-image.png'" class="card-img-top" />
+          <div class="card-body">
+            <h5 class="card-title">{{hotel.hotel_name}}</h5>
+            <p class="card-text">{{hotel.location}}</p>
+            <div class="rating mb-2">
+              @for (star of getStars(hotel.rating); track $index) {
+              <i class="bi" [ngClass]="star"></i>
+              }
+              <span class="rating-text ms-1">({{hotel.rating}})</span>
+            </div>
+            <div class="card-footer-btns d-flex gap-2">
+              <button class="btn btn-primary flex-grow-1" (click)="openModal(hotel)">View Details</button>
+              <a [routerLink]="['/packages']" [queryParams]="{ hotelName: hotel.hotel_name }" class="flex-grow-1">
+                <button class="btn btn-secondary w-100">Select Hotel</button>
+              </a>
+            </div>
+          </div>
         </div>
+      </div>
 
-        <!-- Details Side -->
-        <div class="col-md-6 p-4">
-          <h4>{{ selectedHotel?.name }}</h4>
-          <p><strong>Location:</strong> {{ selectedHotel?.location }}</p>
-          <p><strong>Rating:</strong> {{ selectedHotel?.rating }} ★</p>
-          <p><strong>Description:</strong></p>
-          <p>{{ selectedHotel?.description }}</p>
+      }
 
-          <button class="btn btn-secondary mt-3" data-bs-dismiss="modal">Close</button>
+    </div>
+  </div>
+
+  }
+  @else {
+  <div class="d-flex justify-content-center align-items-center" style="height: 200px;">
+    <div class="spinner-border text-primary" role="status">
+      <span class="sr-only"></span>
+    </div>
+  </div>}
+</div>
+
+
+<div class="modal fade" id="hotelDetailModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-dialog-centered">
+    <div class="modal-content overflow-hidden border-0 shadow-lg">
+      <div class="modal-body p-0">
+        <div class="row g-0">
+          <div class="col-lg-6 position-relative">
+            <img [src]="selectedHotel?.image_url" class="modal-hero-img" alt="Hotel Image" />
+            <div class="modal-img-overlay">
+              <span class="badge bg-gold text-navy shadow-sm mb-2">Premium Hotels</span>
+              <h2 class="text-white mb-0 h3">{{ selectedHotel?.hotel_name }}</h2>
+            </div>
+            <button type="button" class="btn-close btn-close-white position-absolute top-0 end-0 m-4 shadow-none"
+              data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+
+          <!-- Right: Details, Amenities & Reviews -->
+          <div class="col-lg-6 bg-white">
+
+            <div class="modal-details-scroll">
+              <div class="p-4 p-xl-5">
+                <div class="d-flex align-items-center gap-2 mb-3">
+                  <div class="modal-rating">
+                    @for (star of getStars(selectedHotel?.rating); track $index) {
+                    <i class="bi" [ngClass]="star"></i>
+                    }
+                  </div>
+                  <span class="text-muted small">({{selectedHotel?.reviews_count}} Reviews)</span>
+                </div>
+
+                <div class="mb-4">
+                  <h5 class="section-subtitle fw-bold text-navy mb-2"><i
+                      class="bi bi-geo-alt me-2 text-gold"></i>Location
+                  </h5>
+                  <p class="text-muted">{{ selectedHotel?.location }}</p>
+                </div>
+
+                <div class="mb-4">
+                  <h5 class="section-subtitle fw-bold text-navy mb-2"><i class="bi bi-stars me-2 text-gold"></i>Premium
+                    Amenities</h5>
+                  <div class="amenities-grid">
+                    @for (amenity of selectedHotel?.amenities ; track $index) {
+                    <span class="amenity-tag"><i class="bi bi-check2-circle text-success me-1"></i> {{amenity}}</span>
+                    }
+                  </div>
+                </div>
+
+                <div class="mb-5">
+                  <h5 class="section-subtitle fw-bold text-navy mb-3"><i
+                      class="bi bi-chat-left-text me-2 text-gold"></i>Guest Reviews</h5>
+                  <div class="review-item border-start border-4 border-gold ps-3 mb-3">
+                    <p class="small mb-1 text-navy fw-bold">"Exceptional stay at {{selectedHotel?.hotel_name}}!"</p>
+                    <p class="x-small text-muted mb-0">The service was impeccable and the design is truly breathtaking.
+                      Highly recommended!</p>
+                  </div>
+                  <div class="review-item border-start border-4 border-gray-200 ps-3">
+                    <p class="small mb-1 text-navy fw-bold">"Luxury at its finest"</p>
+                    <p class="x-small text-muted mb-0">Best wedding destination we could have picked. The staff went
+                      above and beyond.</p>
+                  </div>
+                </div>
+
+                <div class="d-flex gap-3">
+                  <a [routerLink]="['/packages']" [queryParams]="{ hotelName: selectedHotel?.hotel_name }"
+                    class="flex-grow-1">
+                    <button class="btn btn-primary w-100 py-3">Book This Now</button>
+                  </a>
+                  <button class="btn btn-outline-secondary py-3 flex-grow-1" data-bs-dismiss="modal">Explore
+                    Others</button>
+                </div>
+
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>

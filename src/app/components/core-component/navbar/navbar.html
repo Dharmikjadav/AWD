@@ -1,44 +1,57 @@
 <nav class="navbar navbar-expand-lg">
   <div class="container">
-    <!-- Brand / Logo -->
-    <a class="navbar-brand logo text-primary fw-bold" href="#">Saffron Stays</a>
+    <a class="navbar-brand logo" href="#">
+      <span class="brand-icon">✦</span>
+      Saffron Stays
+    </a>
 
-    <!-- Toggler for Mobile View -->
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu"
       aria-controls="navMenu" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
+      <i class="bi bi-list"></i>
     </button>
 
-    <div class="collapse navbar-collapse justify-content-between" id="navMenu">
+    <div class="collapse navbar-collapse" id="navMenu">
       <ul class="navbar-nav ms-auto nav-links">
         <li class="nav-item">
-          <a class="nav-link" routerLink="/dashboard">Home</a>
+          <a class="nav-link" routerLink="/dashboard" routerLinkActive="active" (click)="closeNavbar()">
+            <i class="bi bi-house-door"></i> Home
+          </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" routerLink="/hotels">Hotels</a>
+          <a class="nav-link" routerLink="/hotels" routerLinkActive="active" (click)="closeNavbar()">
+            <i class="bi bi-building"></i> Hotels
+          </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="/facilities">Facilities</a>
+          <a class="nav-link" routerLink="/packages" routerLinkActive="active" (click)="closeNavbar()">
+            <i class="bi bi-box-seam"></i> Packages
+          </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="/contact_us">Contact</a>
+          <a class="nav-link" routerLink="/facilities" routerLinkActive="active" (click)="closeNavbar()">
+            <i class="bi bi-star"></i> Facilities
+          </a>
         </li>
-
-
-        <button class="btn btn-primary p-1" (click)="logout()">Logout</button>
-
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/contact_us" routerLinkActive="active" (click)="closeNavbar()">
+            <i class="bi bi-envelope"></i> Contact
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/my-bookings" routerLinkActive="active" (click)="closeNavbar()">
+            <i class="bi bi-journal-check"></i> My Bookings
+          </a>
+        </li>
       </ul>
 
+      <div class="nav-actions">
+        <a routerLink="/profile" class="profile-btn" title="Profile">
+          <i class="bi bi-person-circle"></i>
+        </a>
+        <button class="btn-logout" (click)="logout()">
+          <i class="bi bi-box-arrow-right"></i> Logout
+        </button>
+      </div>
     </div>
   </div>
-     <div class="profile d-flex flex-column align-items-center ">
-      <svg xmlns="http://www.w3.org/2000/svg" width="25" height="20" fill="currentColor"
-        class="bi bi-person-fill text-primary" viewBox="0 0 16 16">
-        <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6" />
-      </svg>
-
-      <span class="text-primary fw-medium mt-1" *ngIf="username">
-        {{ username }}
-      </span>
-    </div>
 </nav>

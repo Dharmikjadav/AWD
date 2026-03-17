@@ -1,0 +1,106 @@
+<div class="container-fluid p-5 dashboard">
+
+  <!-- Page Title -->
+  <div class="dashboard-header">
+  <h2 class="title">Admin Dashboard</h2>
+  <p class="subtitle">Overview of key metrics and recent activity</p>
+</div>
+
+  <!-- Stats Cards -->
+  <div class="cards">
+    <div class="card" *ngIf="!isUsersLoading; else userLoading">
+      <h3><i class="bi bi-people-fill"></i> Total Users</h3>
+      <p>{{ totalUsers }}</p>
+    </div>
+    <ng-template #userLoading>
+      <div class="card">
+        <h3><i class="bi bi-people-fill"></i> Total Users</h3>
+       <div class="loader"></div>
+      </div>
+    </ng-template>
+
+    <div class="card" *ngIf="!isHotelsLoading; else hotelLoading">
+      <h3><i class="bi bi-building"></i> Total Hotels</h3>
+      <p>{{ totalHotels }}</p>
+    </div>
+    <ng-template #hotelLoading>
+      <div class="card">
+        <h3><i class="bi bi-building"></i> Total Hotels</h3>
+        <div class="loader"></div>
+      </div>
+    </ng-template>
+
+    <div class="card" *ngIf="!isbookingsLoading; else bookingLoading">
+      <h3><i class="bi bi-journal-check"></i> Approved Bookings</h3>
+      <p>{{ totalBookings }}</p>
+    </div>
+    <div class="card" *ngIf="!isbookingsLoading; else bookingLoading">
+      <h3><i class="bi bi-journal-check"></i> Pending Bookings</h3>
+      <p>{{ pendingbooking }}</p>
+    </div>
+    <ng-template #bookingLoading>
+      <div class="card">
+        <h3><i class="bi bi-journal-check"></i> Total Bookings</h3>
+        <div class="loader"></div>
+      </div>
+    </ng-template>
+
+    <div class="card">
+      <h3><i class="bi bi-currency-rupee"></i> Revenue</h3>
+      <p>₹ {{ revenue }}</p>
+    </div>
+  </div>
+
+  <!-- Recent Bookings Section -->
+  <div class="recent-section">
+    <div class="section-header">
+      <h2 class="section-title"><i class="bi bi-clock-history"></i> Recent Bookings</h2>
+      <p class="section-subtitle">Latest hotel bookings</p>
+    </div>
+
+    <div class="table-wrapper" *ngIf="!isRecentBookingsLoading; else bookingsLoading">
+      <table class="bookings-table">
+        <thead>
+          <tr>
+            <th><i class="bi bi-bookmark"></i> Booking ID</th>
+            <th><i class="bi bi-person"></i> Guest Name</th>
+            <th><i class="bi bi-building"></i> Hotel</th>
+            <th><i class="bi bi-calendar"></i> Check-in</th>
+            <th><i class="bi bi-calendar"></i> Check-out</th>
+            <th><i class="bi bi-credit-card"></i> Amount</th>
+            <th><i class="bi bi-tag"></i> Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let booking of recentBookings;let i = index">
+            <td>{{i+1}}</td>
+            <td>{{ booking.fname || 'N/A' }}</td>
+            <td>{{ booking.hotel || 'N/A' }}</td>
+            <td>{{ booking.check_in ? (booking.check_in | date:'MMM d, y') : 'N/A' }}</td>
+            <td>{{ booking.check_out ? (booking.check_out | date:'MMM d, y') : 'N/A' }}</td>
+            <td class="amount">₹ {{ booking.package_price || 'N/A' }}</td>
+            <td>
+              <span class="status-badge" [ngClass]="'status-' + (booking.status || 'pending')">
+                {{ booking.status || 'pending' }}
+              </span>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <ng-template #bookingsLoading>
+      <div class="loading-container">
+        <div class="spinner-border" role="status">
+          <div class="loader"></div>
+        </div>
+        <p>Loading recent bookings...</p>
+      </div>
+    </ng-template>
+
+    <div class="no-bookings" *ngIf="!isRecentBookingsLoading && recentBookings.length === 0">
+      <p><i class="bi bi-inbox"></i> No bookings found</p>
+    </div>
+  </div>
+
+</div>

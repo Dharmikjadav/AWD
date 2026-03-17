@@ -1,19 +1,19 @@
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Injectable } from "@angular/core";
-import { BehaviorSubject, Observable, of, throwError } from "rxjs";
+import { BehaviorSubject, Observable, of, Subject, throwError } from "rxjs";
 import { catchError, tap } from "rxjs/operators";
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {
-  private apiUrl = 'http://127.0.0.1:8000/api';
+  private apiUrl = 'http://127.0.0.1:8001/api';
 
   private loggedIn = new BehaviorSubject<boolean>(!!this.getToken());
   loggedIn$ = this.loggedIn.asObservable();
 
-  private userSubject = new BehaviorSubject<any>(null);
+  private userSubject = new Subject<any>();
   user$ = this.userSubject.asObservable();
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
   setToken(token: string) {
     localStorage.setItem('authToken', token);
@@ -26,12 +26,17 @@ export class AuthService {
 
   removeToken() {
     localStorage.removeItem('authToken');
+    localStorage.removeItem('email');
     this.loggedIn.next(false);
     this.userSubject.next(null);
   }
 
   isLoggedIn(): boolean {
     return !!this.getToken();
+  }
+  isAdmin(): boolean {
+    const email = localStorage.getItem('email');
+    return email === 'admin@gmail.com';
   }
 
   checkSession(): Observable<any> {
@@ -46,7 +51,7 @@ export class AuthService {
       .pipe(
         tap((res: any) => {
           if (res.user) {
-            this.userSubject.next(res.user); 
+            this.userSubject.next(res.user);
           }
         }),
         catchError(err => throwError(() => err))

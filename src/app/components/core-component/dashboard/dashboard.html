@@ -1,279 +1,272 @@
-<div class="image_container">
-  <img src="image/home3.jpg" alt="">
-  <div class="white-cover"></div>
-
-  <h1>Effortless Hotel Management, Exceptional Guest Experience.</h1>
-  <button class="btn-book" data-toggle="modal" data-target="#exampleModalCenter" (click)="AddBooking()">Book Now</button>
+<!-- ============================================
+     HERO SECTION
+     ============================================ -->
+<div class="hero-section">
+  <img src="image/home3.jpg" alt="Saffron Stays luxury hotel">
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <span class="hero-badge animate-fade-down">✦ Welcome to Saffron Stays</span>
+    <h1 class="animate-fade-up">Effortless Hotel Management,<br>Exceptional Guest Experience.</h1>
+    <p class="hero-subtitle animate-fade-up delay-2">Discover elegance, comfort, and world-class hospitality — all in
+      one place.</p>
+    <a href="/hotels" class="hero-btn animate-fade-up delay-3">
+      <span>Explore Hotels</span>
+      <i class="bi bi-arrow-right"></i>
+    </a>
+  </div>
 </div>
 
-
-
-<div class="container-fluid">
-  <div class="row">
-    <div class="center_text">
-      <div class="h1">Saffron Stays
-      </div>
-      <p>INDIA'S PRIDE, WORLD'S STRONGEST</p>
-      <p class="p_text">Discover elegance and warmth
-        Your perfect retreat awaits.</p>
+<!-- ============================================
+     BRAND SECTION
+     ============================================ -->
+<section class="brand-section section-padding">
+  <div class="container text-center">
+    <div class="brand-badge animate-fade-up">
+      <span class="h1 gradient-text">Saffron Stays</span>
     </div>
-
-
+    <p class="brand-tagline animate-fade-up delay-1">INDIA'S PRIDE, WORLD'S STRONGEST</p>
+    <p class="brand-description animate-fade-up delay-2">Discover elegance and warmth — Your perfect retreat awaits.</p>
   </div>
-  <!-- <div class="row">
-    <div class="col-sm-4 col1">
-      <img src="image\table.png" class="img-set">
-    </div>
-    <div class="col-sm-4 col2">
-      <img src="image\reception.png" alt="" class="img-set">
-    </div>
-    <div class="col-sm-4 col3">
-      <img src="image\table1.png" class="img-set">
-    </div>
-  </div> -->
+</section>
 
-  <div class="card-group">
-    <div class="card col-md-3 mb-4">
-      <img src="image\reception.png" class="card-img-top" alt="...">
-      <div class="card-body">
-        <h5 class="card-title text-primary"> Room booking</h5>
-        <p class="card-text">Spacious room with premium comfort.
-          Ideal for couples or small families.</p>
-        <p class="card-text"><small class="text-body-secondary">Book your room Now!</small></p>
-      </div>
-    </div>
-
-    <div class="card col-md-3 mb-4">
-      <img src="image\table.png" class="card-img-top" alt="...">
-      <div class="card-body">
-        <h5 class="card-title text-primary">Restaurant / Dining</h5>
-        <p class="card-text">Enjoy delicious multi-cuisine meals in a cozy ambiance.
-          Open all day with room service available.</p>
-        <p class="card-text"><small class="text-body-secondary">Fresh Meal , Open 24/7</small></p>
-      </div>
-    </div>
-
-    <div class="card col-md-3 mb-4">
-      <img src="image\cover_img3.jpg" class="card-img-top img3" alt="...">
-      <div class="card-body">
-        <h5 class="card-title text-primary">Event booking</h5>
-        <p class="card-text">Host meetings, parties, and special events with ease.
-          Elegant halls and full-service event support available.</p>
-        <p class="card-text"><small class="text-body-secondary">Host Your Event Here</small></p>
-      </div>
-    </div>
-
-  </div>
-
-  <div class="container-fluid book_container">
-    <div class="container ">
-      <div class="row mt-5">
-        <div class="col-md-8 col4 pt-5">
-          <h2>Room Booking</h2>
-          <p>
-            Book your stay with us! Choose from a variety of rooms designed for your comfort and convenience. Enjoy
-            luxury
-            amenities, excellent service, and a memorable experience.
-          </p>
-          <ul>
-            <li>Standard, Deluxe, and Suite Rooms</li>
-            <li>Affordable prices with great offers</li>
-            <li>Easy online booking and instant confirmation</li>
-          </ul>
-        
-        </div>
-
-        <!-- Image -->
-        <div class="col-md-4 col4 pt-5">
-          <img src="image/book-a-hotel-room.jpg" alt="Room Booking" class="img-fluid rounded" />
-        </div>
-      </div>
-    </div>
-
-  </div>
-
-</div>
-
-<div class="container-fluid Dining_container">
+<!-- ============================================
+     SERVICES CARDS
+     ============================================ -->
+<section class="services-section">
   <div class="container">
-    <div class="row">
-      <div class="col-md-4 col4 pt-5">
-        <img src="image/resturant3.jpg" alt="Restaurant Dining" class="img-fluid rounded" />
+    <div class="row g-4">
+      <div class="col-md-4 animate-fade-up delay-1">
+        <div class="service-card">
+          <div class="service-img-wrap">
+            <img src="image/reception.png" alt="Room booking">
+            <div class="service-img-overlay">
+              <i class="bi bi-door-open"></i>
+            </div>
+          </div>
+          <div class="service-body">
+            <h5>Room Booking</h5>
+            <p>Spacious rooms with premium comfort. Ideal for couples or small families.</p>
+            <span class="service-cta">Book your room Now! <i class="bi bi-arrow-right"></i></span>
+          </div>
+        </div>
       </div>
-      <div class="col-md-8 sidetext2 pt-5 pr-3">
+
+      <div class="col-md-4 animate-fade-up delay-2">
+        <div class="service-card">
+          <div class="service-img-wrap">
+            <img src="image/table.png" alt="Restaurant dining">
+            <div class="service-img-overlay">
+              <i class="bi bi-cup-hot"></i>
+            </div>
+          </div>
+          <div class="service-body">
+            <h5>Restaurant / Dining</h5>
+            <p>Enjoy delicious multi-cuisine meals in a cozy ambiance. Open all day.</p>
+            <span class="service-cta">Fresh Meals, Open 24/7 <i class="bi bi-arrow-right"></i></span>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4 animate-fade-up delay-3">
+        <div class="service-card">
+          <div class="service-img-wrap">
+            <img src="image/cover_img3.jpg" alt="Event booking">
+            <div class="service-img-overlay">
+              <i class="bi bi-calendar-event"></i>
+            </div>
+          </div>
+          <div class="service-body">
+            <h5>Event Booking</h5>
+            <p>Host meetings, parties, and special events with ease and elegance.</p>
+            <span class="service-cta">Host Your Event Here <i class="bi bi-arrow-right"></i></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================
+     ROOM BOOKING SECTION
+     ============================================ -->
+<section class="feature-section section-padding">
+  <div class="container">
+    <div class="row align-items-center g-5">
+      <div class="col-md-7 animate-fade-up">
+        <span class="feature-label"><i class="bi bi-gem"></i> Premium Stay</span>
+        <h2>Room Booking</h2>
+        <p>
+          Book your stay with us! Choose from a variety of rooms designed for your comfort and convenience. Enjoy
+          luxury amenities, excellent service, and a memorable experience.
+        </p>
+        <ul class="feature-list">
+          <li><i class="bi bi-check-circle-fill"></i> Standard, Deluxe, and Suite Rooms</li>
+          <li><i class="bi bi-check-circle-fill"></i> Affordable prices with great offers</li>
+          <li><i class="bi bi-check-circle-fill"></i> Easy online booking and instant confirmation</li>
+        </ul>
+      </div>
+      <div class="col-md-5 animate-fade-up delay-2">
+        <div class="feature-img-wrap">
+          <img src="image/book-a-hotel-room.jpg" alt="Room Booking" class="img-fluid" />
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================
+     DINING SECTION
+     ============================================ -->
+<section class="feature-section feature-alt section-padding">
+  <div class="container">
+    <div class="row align-items-center g-5">
+      <div class="col-md-5 animate-fade-up">
+        <div class="feature-img-wrap">
+          <img src="image/resturant3.jpg" alt="Restaurant Dining" class="img-fluid" />
+        </div>
+      </div>
+      <div class="col-md-7 animate-fade-up delay-2">
+        <span class="feature-label"><i class="bi bi-cup-straw"></i> Fine Dining</span>
         <h2>Restaurant / Dining</h2>
         <p>
           Enjoy delicious multi-cuisine meals in a cozy ambiance.
           Open all day with room service available to satisfy your cravings anytime.
         </p>
-        <ul>
-          <li>Fresh, locally sourced ingredients</li>
-          <li>Traditional and international dishes</li>
-          <li>Comfortable seating with elegant decor</li>
+        <ul class="feature-list">
+          <li><i class="bi bi-check-circle-fill"></i> Fresh, locally sourced ingredients</li>
+          <li><i class="bi bi-check-circle-fill"></i> Traditional and international dishes</li>
+          <li><i class="bi bi-check-circle-fill"></i> Comfortable seating with elegant decor</li>
         </ul>
       </div>
     </div>
   </div>
-</div>
+</section>
 
-<div class="conatiner-fluid event_container">
+<!-- ============================================
+     EVENT SECTION
+     ============================================ -->
+<section class="feature-section section-padding">
   <div class="container">
-    <div class="row mt-3">
-      <!-- Description -->
-      <div class="col-md-8 col4 pt-5">
+    <div class="row align-items-center g-5">
+      <div class="col-md-7 animate-fade-up">
+        <span class="feature-label"><i class="bi bi-stars"></i> Celebrate With Us</span>
         <h2>Event Booking</h2>
         <p>
           Host your special events with elegance and ease at Saffron Stays.
           Whether it's a wedding, meeting, or party — we provide the perfect venue with full support.
         </p>
-        <ul>
-          <li>Spacious banquet and conference halls</li>
-          <li>Customizable décor and catering options</li>
-          <li>Professional event planning assistance</li>
+        <ul class="feature-list">
+          <li><i class="bi bi-check-circle-fill"></i> Spacious banquet and conference halls</li>
+          <li><i class="bi bi-check-circle-fill"></i> Customizable décor and catering options</li>
+          <li><i class="bi bi-check-circle-fill"></i> Professional event planning assistance</li>
         </ul>
       </div>
-
-      <!-- Image -->
-      <div class="col-md-4 col4 pt-5">
-        <img src="image/event_booking.jpg" alt="Event Booking" class="img-fluid rounded shadow" />
+      <div class="col-md-5 animate-fade-up delay-2">
+        <div class="feature-img-wrap">
+          <img src="image/event_booking.jpg" alt="Event Booking" class="img-fluid" />
+        </div>
       </div>
     </div>
   </div>
-</div>
+</section>
 
-<div class="container-fluid mt-5 slide_box">
-  <h1>Exclusively for You</h1>
-  <div class="row align-items-center text-center">
-    <!-- Left Text -->
-    <div class="col-md-3">
-      <h5 class="text-primary">Make Every Moment Special</h5>
-      <p style="font-size: 14px;">Perfect venues for weddings, parties, and corporate events.</p>
-    </div>
-
-    <!-- Center Carousel -->
-    <div class="col-md-6">
-
-      <div id="eventCarousel" class="carousel slide" data-bs-ride="carousel">
-        <div class="carousel-inner rounded shadow">
-          <div class="carousel-item active">
-            <img src="image/slide3.jpg" class="d-block w-100" alt="Event 1">
-          </div>
-          <div class="carousel-item">
-            <img src="image/slide2.avif" class="d-block w-100" alt="Event 2">
-          </div>
-          <div class="carousel-item">
-            <img src="image/slide1.jpg" class="d-block w-100" alt="Event 3">
-          </div>
+<!-- ============================================
+     CAROUSEL / EXCLUSIVELY FOR YOU
+     ============================================ -->
+<section class="carousel-section section-padding">
+  <div class="container">
+    <h2 class="section-title animate-fade-up">Exclusively for You</h2>
+    <div class="row align-items-center">
+      <div class="col-md-3 text-center animate-fade-up delay-1">
+        <div class="carousel-side-card">
+          <i class="bi bi-heart-fill"></i>
+          <h5>Make Every Moment Special</h5>
+          <p>Perfect venues for weddings, parties, and corporate events.</p>
         </div>
-        <!-- Optional buttons -->
-        <button class="carousel-control-prev" type="button" data-bs-target="#eventCarousel" data-bs-slide="prev">
-          <span class="carousel-control-prev-icon"></span>
-        </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#eventCarousel" data-bs-slide="next">
-          <span class="carousel-control-next-icon"></span>
-        </button>
+      </div>
+
+      <div class="col-md-6 animate-scale-in delay-2">
+        <div id="eventCarousel" class="carousel slide" data-bs-ride="carousel">
+          <div class="carousel-inner rounded-4 shadow-lg">
+            <div class="carousel-item active">
+              <img src="image/slide3.jpg" class="d-block w-100" alt="Event 1">
+            </div>
+            <div class="carousel-item">
+              <img src="image/slide2.avif" class="d-block w-100" alt="Event 2">
+            </div>
+            <div class="carousel-item">
+              <img src="image/slide1.jpg" class="d-block w-100" alt="Event 3">
+            </div>
+          </div>
+          <button class="carousel-control-prev" type="button" data-bs-target="#eventCarousel" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon"></span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#eventCarousel" data-bs-slide="next">
+            <span class="carousel-control-next-icon"></span>
+          </button>
+        </div>
+      </div>
+
+      <div class="col-md-3 text-center animate-fade-up delay-3">
+        <div class="carousel-side-card">
+          <i class="bi bi-camera-fill"></i>
+          <h5>Create Memories Together</h5>
+          <p>Celebrate weddings, reunions, and outdoor events in style.</p>
+        </div>
       </div>
     </div>
-
-    <!-- Right Text -->
-    <div class="col-md-3">
-      <h5 class="text-primary">Create Memories Together</h5>
-      <p style="font-size: 14px;">Celebrate weddings, reunions, and outdoor events in style.</p>
-    </div>
   </div>
-</div>
+</section>
 
-<div class="container my-5 pt-5">
-  <div class="row align-items-center">
-    <!-- Image Column -->
-    <div class="col-md-6">
-      <img src="image/about.avif" class="img-fluid rounded shadow" alt="About Us">
-    </div>
-
-    <!-- Text Column -->
-    <div class="col-md-6">
-      <h2 class="text-primary mb-5 text-center">About Us</h2>
-      <p>
-        Welcome to <strong>Saffron Stays</strong>, where comfort meets elegance. Nestled in a peaceful setting, we offer
-        exceptional hospitality and thoughtfully designed rooms to make your stay unforgettable.
-      </p>
-      <p>
-        Whether you're here for business, leisure, or a family getaway, our team ensures personalized service, fine
-        dining,
-        and a relaxing atmosphere to help you unwind.
-      </p>
-      <!-- Trigger Button -->
-      <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#contactModal">
-       <a class="con_link" href="contact_us">Contact Us</a> 
-      </button>
-
-      <!-- Modal -->
-      <!-- <div class="modal fade" id="contactModal" tabindex="-1" aria-labelledby="contactModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-lg">
-          <div class="modal-content">
-
-           
-            <div class="modal-header">
-              <h5 class="modal-title" id="contactModalLabel">Contact Us</h5>
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-
-            
-            <div class="modal-body">
-              <form>
-                <div class="mb-3">
-                  <input type="text" class="form-control" placeholder="Your Name" required>
-                </div>
-                <div class="mb-3">
-                  <input type="email" class="form-control" placeholder="Your Email" required>
-                </div>
-                <div class="mb-3">
-                  <textarea class="form-control" rows="4" placeholder="Your Message" required></textarea>
-                </div>
-              </form>
-            </div>
-
-            
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-              <button type="submit" class="btn btn-primary">Send Message</button>
-            </div>
-
-          </div>
+<!-- ============================================
+     ABOUT US
+     ============================================ -->
+<section class="about-section section-padding">
+  <div class="container">
+    <div class="row align-items-center g-5">
+      <div class="col-md-6 animate-fade-up">
+        <div class="about-img-wrap">
+          <img src="image/about.avif" class="img-fluid" alt="About Us">
+          <div class="about-img-accent"></div>
         </div>
-      </div> -->
+      </div>
 
-
+      <div class="col-md-6 animate-fade-up delay-2">
+        <span class="feature-label"><i class="bi bi-info-circle"></i> Our Story</span>
+        <h2>About Us</h2>
+        <p>
+          Welcome to <strong>Saffron Stays</strong>, where comfort meets elegance. Nestled in a peaceful setting, we
+          offer
+          exceptional hospitality and thoughtfully designed rooms to make your stay unforgettable.
+        </p>
+        <p>
+          Whether you're here for business, leisure, or a family getaway, our team ensures personalized service, fine
+          dining, and a relaxing atmosphere to help you unwind.
+        </p>
+        <a routerLink="/contact_us" class="btn btn-primary">
+          <i class="bi bi-chat-text"></i> Contact Us
+        </a>
+      </div>
     </div>
   </div>
-</div>
+</section>
 
 
-
-
-
-
-
-
-
-
-
-
-<!-- Modal -->
+<!-- ============================================
+     BOOKING MODAL (keep existing functionality)
+     ============================================ -->
 <div class="modal fade" id="exampleModalCenter" tabindex="-1" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
       <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
+        <h5 class="modal-title">Book Your Stay</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
 
       <div class="modal-body">
         <form [formGroup]="bookingForm" (ngSubmit)="AddBooking()">
           <h2>Book Your Stay</h2>
 
-          <!-- Full Name -->
           <div class="form-group">
             <label>Full Name</label>
             <input type="text" formControlName="fullname" class="form-control"
@@ -285,7 +278,6 @@
             </div>
           </div>
 
-          <!-- Email -->
           <div class="form-group">
             <label>Email</label>
             <input type="email" formControlName="email" class="form-control"
@@ -296,7 +288,6 @@
             </div>
           </div>
 
-          <!-- Phone -->
           <div class="form-group">
             <label>Phone</label>
             <input type="tel" formControlName="phone" class="form-control"
@@ -307,7 +298,6 @@
             </div>
           </div>
 
-          <!-- Check-in -->
           <div class="form-group">
             <label>Check-in Date</label>
             <input type="date" formControlName="checkindate" class="form-control"
@@ -317,7 +307,6 @@
             </div>
           </div>
 
-          <!-- Check-out -->
           <div class="form-group">
             <label>Check-out Date</label>
             <input type="date" formControlName="checkoutdate" class="form-control"
@@ -328,7 +317,6 @@
             </div>
           </div>
 
-          <!-- Guests -->
           <div class="form-group">
             <label>Guests</label>
             <select formControlName="guests" class="form-control"
@@ -344,7 +332,6 @@
             </div>
           </div>
 
-          <!-- Hotel -->
           <div class="form-group">
             <label>Select Hotel</label>
             <input type="text" formControlName="hotelName" (input)="filterHotels()" list="hotelList"
@@ -357,7 +344,6 @@
             </div>
           </div>
 
-          <!-- Room -->
           <div class="form-group">
             <label>Room Type</label>
             <select formControlName="room" class="form-control"
@@ -372,13 +358,13 @@
               Room type is required
             </div>
           </div>
+
           <div *ngIf="successMessage" class="alert alert-success alert-dismissible fade show" role="alert">
             {{ successMessage }}
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
           </div>
 
-          <!-- Submit -->
-          <button type="submit" class="btn btn-primary w-100">Confirm Booking</button>
+          <button type="submit" class="btn btn-primary w-100 mt-3">Confirm Booking</button>
         </form>
       </div>
     </div>

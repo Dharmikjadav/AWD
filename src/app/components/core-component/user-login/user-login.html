@@ -1,19 +1,134 @@
- <div class="login-container">
-    <div class="card login-card p-4">
-      <a class="navbar-brand logo text-primary fw-bold text-center mb-3" href="#">Saffron Stays</a>
-
-      <h3 class="text-center mb-4">Login</h3>
-      <form (ngSubmit)="login()" #loginForm="ngForm">
-        <div class="mb-3">
-          <label for="email" class="form-label">Email address</label>
-          <input type="email" class="form-control" id="email" name="email" [(ngModel)]="email" placeholder="Enter your email" required>
-        </div>
-        <div class="mb-3">
-          <label for="password" class="form-label">Password</label>
-          <input type="password" class="form-control" id="password" name="password" [(ngModel)]="password" placeholder="Enter your password" required>
-        </div>
-        <button type="submit" class="btn btn-custom w-100">Login</button>
-        <div class="pt-3">No Account?<a  href="registarion-form">Register</a></div>
-      </form>
+<div class="auth-wrapper">
+  <div class="auth-left">
+    <div class="auth-left-content">
+      <span class="brand-icon">✦</span>
+      <h1>Saffron Stays</h1>
+      <p>Experience luxury hospitality with elegantly designed rooms, fine dining, and exceptional guest services.</p>
+      <div class="auth-features">
+        <div class="auth-feature"><i class="bi bi-shield-check"></i> Secure Login</div>
+        <div class="auth-feature"><i class="bi bi-lightning"></i> Instant Booking</div>
+        <div class="auth-feature"><i class="bi bi-star"></i> Premium Service</div>
+      </div>
     </div>
   </div>
+  <div class="auth-right">
+    <div class="auth-card">
+      <div class="auth-card-header">
+        <a class="auth-logo" href="#">Saffron Stays</a>
+        <h3>Welcome Back</h3>
+        <p>Sign in to your account</p>
+      </div>
+      <div class="login-tabs mb-4">
+        <button type="button" class="tab-btn" [class.active]="loginMethod === 'email'"
+          (click)="toggleLoginMethod('email')">
+          <i class="bi bi-envelope"></i> Email
+        </button>
+        <button type="button" class="tab-btn" [class.active]="loginMethod === 'mobile'"
+          (click)="toggleLoginMethod('mobile')">
+          <i class="bi bi-phone"></i> Mobile
+        </button>
+      </div>
+
+      <form (ngSubmit)="login()" #loginForm="ngForm">
+        <!-- Email Login Fields -->
+        @if (loginMethod === 'email') {
+        <div class="animate-fade-in">
+          <div class="form-group">
+            <label for="email" class="form-label">
+              <i class="bi bi-envelope"></i> Email address
+            </label>
+
+            <input type="email" class="form-control" id="email" name="email" [(ngModel)]="email" #emailCtrl="ngModel"
+              placeholder="Enter your email" required email
+              [ngClass]="{'is-invalid': emailCtrl.invalid && emailCtrl.touched}">
+
+            <div class="invalid-feedback" *ngIf="emailCtrl.invalid && emailCtrl.touched">
+              <div *ngIf="emailCtrl.errors?.['required']">
+                Email is required
+              </div>
+              <div *ngIf="emailCtrl.errors?.['email']">
+                Enter a valid email address
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="password" class="form-label">
+              <i class="bi bi-lock"></i> Password
+            </label>
+
+            <input type="password" class="form-control" id="password" name="password" [(ngModel)]="password"
+              #passwordCtrl="ngModel" placeholder="Enter your password" required minlength="6"
+              [ngClass]="{'is-invalid': passwordCtrl.invalid && passwordCtrl.touched}">
+
+            <div class="invalid-feedback" *ngIf="passwordCtrl.invalid && passwordCtrl.touched">
+              <div *ngIf="passwordCtrl.errors?.['required']">
+                Password is required
+              </div>
+              <div *ngIf="passwordCtrl.errors?.['minlength']">
+                Password must be at least 6 characters
+              </div>
+            </div>
+          </div>
+        </div>
+        }
+
+        <!-- Mobile Login Fields -->
+        @if (loginMethod === 'mobile') {
+        <div class="animate-fade-in">
+          <div class="form-group">
+            <label for="phone" class="form-label"><i class="bi bi-phone"></i> Mobile Number</label>
+            <div class="input-group">
+              <input type="text" class="form-control" id="phone" name="phone" [(ngModel)]="phone"
+                placeholder="Enter 10-digit number" [disabled]="showOtpField" required>
+              @if (!showOtpField) {
+              <button class="btn btn-outline-primary" type="button" (click)="sendOTP()" [disabled]="isSendingOtp">
+                {{ isSendingOtp ? 'Sending...' : 'Send OTP' }}
+              </button>
+              } @else {
+              <button class="btn btn-outline-secondary" type="button" (click)="showOtpField = false">
+                Edit
+              </button>
+              }
+            </div>
+          </div>
+
+          @if (showOtpField) {
+          <div class="form-group animate-slide-up">
+            <label for="otp" class="form-label"><i class="bi bi-shield-lock"></i> Verification Code</label>
+            <input type="text" class="form-control text-center otp-input" id="otp" name="otp" [(ngModel)]="otp"
+              placeholder="Enter 6-digit OTP" maxlength="6" required>
+            <p class="small text-muted mt-2">Code sent to your registered email</p>
+          </div>
+          }
+        </div>
+        }
+
+        <button type="submit" class="btn btn-primary w-100 mt-2" [disabled]="loginMethod === 'mobile' && !showOtpField">
+          <i class="bi bi-box-arrow-in-right"></i>
+          {{ loginMethod === 'mobile' ? 'Verify & Login' : 'Login' }}
+        </button>
+
+        <div class="auth-footer">
+          <span>No Account?</span>
+          <a href="registarion-form">Create one</a>
+        </div>
+      </form>
+
+    </div>
+  </div>
+
+  <!-- Loading Animation Overlay -->
+  @if (isLoading) {
+  <div class="loading-overlay animate-fade-in">
+    <div class="loader-container">
+      <div class="luxury-loader">
+        <div class="loader-circle"></div>
+        <div class="loader-circle"></div>
+        <div class="loader-circle"></div>
+      </div>
+      <h3>Authenticating</h3>
+      <p>Securing your luxury experience...</p>
+    </div>
+  </div>
+  }
+</div>

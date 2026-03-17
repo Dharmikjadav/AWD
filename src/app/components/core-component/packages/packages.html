@@ -1,0 +1,39 @@
+<div class="hero-section">
+  <img src="image/package_hero.png" alt="Wedding Packages">
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <span class="hero-badge animate-fade-down">✦ Saffron Stays Experiences</span>
+    <h1 class="animate-fade-up">Tailored <br>Packages</h1>
+    <p class="hero-subtitle animate-fade-up delay-2">From intimate gatherings to royal galas, find the perfect package
+      for your dream day.</p>
+  </div>
+</div>
+
+<div class="container section-padding">
+
+  <h2 class="title">Our Hotel Packages</h2>
+
+  <div class="package-grid">
+    <div class="package-card" *ngFor="let pkg of packages; let i = index" [ngClass]="{'featured-package': i === 1}">
+
+      <span *ngIf="i === 1" class="featured-badge">⭐ Most Popular</span>
+
+      <h3>{{ pkg.package_name }}</h3>
+
+      <ul class="description-list">
+        <li *ngFor="let line of pkg.description.split(',')">
+          {{ line }}
+        </li>
+      </ul>
+
+      <p>Duration: {{ pkg.duration_days }} days</p>
+
+      <div class="price">
+        ₹ {{ pkg.price }}
+      </div>
+
+      <button (click)="bookNow(pkg)">Book Now</button>
+
+    </div>
+  </div>
+</div>

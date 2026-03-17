@@ -2,20 +2,23 @@ import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, FormBuilder, Validators, AbstractControl, ReactiveFormsModule } from '@angular/forms';
 import { Booking } from '../../../service/booking';
 import { AuthService } from '../../../service/auth.service';
-import { Router } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
+import { Hotelsdata } from '../../../service/hotelsdata';
 declare var bootstrap: any;
 
 @Component({
   selector: 'app-dashboard',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule],
+  imports: [CommonModule, ReactiveFormsModule, RouterModule],
   templateUrl: './dashboard.html',
   styleUrl: './dashboard.scss'
 })
 export class Dashboard implements OnInit, AfterViewInit {
   submitted = false;
   successMessage: string | null = null;
+  hotelNames: string[] = [];
+  filteredHotels: string[] = [];
 
   bookingForm = new FormGroup({
     fullname: new FormControl(''),
@@ -31,6 +34,7 @@ export class Dashboard implements OnInit, AfterViewInit {
   constructor(
     private fb: FormBuilder,
     public booking: Booking,
+    private hotelService: Hotelsdata,
     private authService: AuthService,
     private router: Router
   ) { }
@@ -96,7 +100,7 @@ export class Dashboard implements OnInit, AfterViewInit {
       room_type: this.bookingForm.controls.room.value,
     };
 
-  
+
     this.booking.AddBooking(payload).subscribe({
       next: (res) => {
         this.successMessage = "Booking Confirmed !!!!";
@@ -118,18 +122,13 @@ export class Dashboard implements OnInit, AfterViewInit {
     });
   }
 
-  hotelNames: string[] = [
-    'Urban Palace',
-    'The Heritage',
-    'Grand Palace',
-    'Hotel Sunrise',
-    'Ocean View Resort',
-    'Mountain Nest',
-    'City Light Hotel',
-    'Hotel Green Park',
-    'Royal Stay'
-  ];
-  filteredHotels: string[] = [...this.hotelNames];
+  loadHotels() {
+    this.hotelService.gethotels1().subscribe(data => {
+      this.hotelNames = data.map(hotel => hotel.hotel_name);
+      this.filteredHotels = this.hotelNames;
+      console.log(this.hotelNames);
+    });
+  }
 
   filterHotels() {
     const term = this.bookingForm.get('hotelName')?.value?.toLowerCase() || '';
@@ -145,13 +144,13 @@ export class Dashboard implements OnInit, AfterViewInit {
   }
 
   closeModal() {
-  const modalEl = document.getElementById('exampleModalCenter');
-  if (modalEl) {
-    const modalInstance = bootstrap.Modal.getInstance(modalEl)
-      || new bootstrap.Modal(modalEl);
-    modalInstance.hide();
+    const modalEl = document.getElementById('exampleModalCenter');
+    if (modalEl) {
+      const modalInstance = bootstrap.Modal.getInstance(modalEl)
+        || new bootstrap.Modal(modalEl);
+      modalInstance.hide();
+    }
   }
-}
 }
 
 

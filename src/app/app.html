@@ -1,10 +1,15 @@
-
-
-@if(authservice.isLoggedIn()){
+@if(authservice.isLoggedIn() && !authservice.isAdmin()){
 <app-navbar></app-navbar>
 }
-<router-outlet />
+@if (authservice.isLoggedIn() && authservice.isAdmin()) {
+<app-navbaradmin></app-navbaradmin>
+}
 
-@if(authservice.isLoggedIn()){
+
+<div class="main-content">
+  <router-outlet></router-outlet>
+</div>
+
+@if(authservice.isLoggedIn() && !authservice.isAdmin()){
 <app-footer></app-footer>
 }

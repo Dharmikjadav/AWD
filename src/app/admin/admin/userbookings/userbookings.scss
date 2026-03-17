@@ -1,0 +1,247 @@
+/* Main Container */
+.table-container {
+  width: 92%;
+  margin: var(--space-3xl) auto;
+  background: var(--white);
+  padding: var(--space-lg);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  font-family: var(--font-body);
+}
+
+/* Heading */
+.table-container h2 {
+  text-align: center;
+  color: var(--navy);
+  margin-bottom: var(--space-lg);
+  font-weight: 600;
+  font-family: var(--font-heading);
+}
+
+/* Table */
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+/* Header */
+thead {
+  background: var(--gray-50);
+}
+
+th {
+  padding: 14px;
+  text-align: left;
+  color: var(--navy);
+  font-weight: 600;
+  font-size: 14px;
+  text-transform: uppercase;
+}
+
+/* Table Data */
+td {
+  padding: 12px;
+  border-bottom: 1px solid #e2e8f0;
+  color: var(--gray-600);
+  font-size: 14px;
+}
+
+/* Row Hover */
+tr:hover {
+  background: var(--gray-50);
+  transition: 0.2s var(--ease-out);
+}
+
+/* Action Buttons */
+.edit-btn {
+  background: var(--info);
+  color: var(--cream);
+  border: none;
+  padding: 6px 14px;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  font-size: 0.8125rem;
+  margin-right: 5px;
+}
+
+.edit-btn:hover {
+  background: var(--navy);
+}
+
+.delete-btn {
+  background: var(--error);
+  color: var(--cream);
+  border: none;
+  padding: 6px 14px;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  font-size: 0.8125rem;
+}
+
+.delete-btn:hover {
+  background: var(--error-dark);
+}
+
+.approve-btn {
+  background: var(--success, #10b981);
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  margin-right: 5px;
+  font-size: 0.8rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+
+  &:hover {
+    background: #059669;
+  }
+}
+
+.reject-btn {
+  background: var(--error, #ef4444);
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  margin-right: 5px;
+  font-size: 0.8rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+
+  &:hover {
+    background: #dc2626;
+  }
+}
+
+.action-cell {
+  display: flex;
+  gap: 4px;
+  align-items: center;
+}
+
+.status-badge {
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: capitalize;
+
+  &.pending {
+    background: #fef3c7;
+    color: #92400e;
+  }
+
+  &.approved {
+    background: #d1fae5;
+    color: #065f46;
+  }
+
+  &.rejected {
+    background: #fee2e2;
+    color: #991b1b;
+  }
+}
+
+/* ================= MODAL ================= */
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.55);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  z-index: 1000;
+}
+
+.modal-box {
+  background: var(--white);
+  padding: var(--space-3xl);
+  width: 420px;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+  border: 2px solid var(--info);
+  animation: popupFade 0.3s ease-in-out;
+}
+
+/* Animation */
+@keyframes popupFade {
+  from {
+    transform: translateY(-20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.modal-box h2 {
+  text-align: center;
+  margin-bottom: var(--space-lg);
+  color: var(--navy);
+  font-weight: 600;
+}
+
+/* Inputs */
+.modal-box input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 14px;
+
+  border: 1px solid var(--info);
+  border-radius: 8px;
+  outline: none;
+  font-size: 14px;
+}
+
+.modal-box input:focus {
+  border-color: var(--info);
+  box-shadow: 0 0 5px rgba(14,165,233,0.3);
+}
+
+/* Buttons Group */
+.btn-group {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+
+/* Update Button */
+.update-btn {
+  background: var(--info);
+  border: none;
+  padding: 8px 18px;
+  color: var(--cream);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  font-size: 0.875rem;
+}
+
+.update-btn:hover {
+  background: var(--navy);
+}
+
+/* Cancel Button */
+.cancel-btn {
+  background: var(--gray-200);
+  border: none;
+  padding: 8px 18px;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  font-size: 0.875rem;
+}
+
+.cancel-btn:hover {
+  background: #cbd5e1;
+}

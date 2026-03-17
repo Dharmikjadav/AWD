@@ -1,6 +1,59 @@
-img{
-    display: block;
-    margin-right: auto;
-    margin-left: auto;
-    width: 30%;
+/* ===========================================
+   404 PAGE — Premium Design
+   =========================================== */
+
+.not-found-page {
+    min-height: 80vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--cream);
+    padding: 60px 20px;
+}
+
+.not-found-content {
+    text-align: center;
+    max-width: 500px;
+}
+
+.not-found-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--navy), var(--navy-light));
+    margin-bottom: 24px;
+}
+
+.not-found-icon i {
+    font-size: 2.5rem;
+    color: var(--gold);
+}
+
+.not-found-content h1 {
+    font-family: var(--font-heading);
+    font-size: 5rem;
+    font-weight: 700;
+    color: var(--navy);
+    line-height: 1;
+    margin-bottom: 8px;
+    background: linear-gradient(135deg, var(--navy), var(--gold));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.not-found-content h3 {
+    font-family: var(--font-heading);
+    color: var(--navy);
+    font-size: 1.5rem;
+    margin-bottom: 12px;
+}
+
+.not-found-content p {
+    color: var(--gray-500) !important;
+    font-size: 1rem;
+    margin-bottom: 28px;
 }

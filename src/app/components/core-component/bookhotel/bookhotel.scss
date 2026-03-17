@@ -1,0 +1,80 @@
+/* ===========================================
+   BOOK HOTEL — Premium Design
+   =========================================== */
+
+.card {
+  background: var(--white) !important;
+  border: 1px solid rgba(212, 168, 67, 0.08) !important;
+  border-radius: var(--radius-xl) !important;
+  box-shadow: var(--shadow-lg);
+}
+
+h2 {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  color: var(--navy);
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, var(--gold), var(--gold-dark)) !important;
+  border: none !important;
+  color: var(--navy) !important;
+  font-weight: 600 !important;
+  box-shadow: var(--shadow-gold) !important;
+  transition: all 0.3s var(--ease-out) !important;
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px) !important;
+  box-shadow: 0 12px 40px rgba(212, 168, 67, 0.4) !important;
+}
+
+.form-label {
+  font-weight: 500;
+  color: var(--navy);
+  font-size: 0.9rem;
+}
+
+.container.py-5 {
+  background: var(--cream);
+  min-height: 80vh;
+}
+
+.input-group {
+  display: flex;
+  align-items: stretch;
+  width: 100%;
+
+  .input-group-text {
+    display: flex;
+    align-items: center;
+    padding: 0.75rem 1rem;
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--navy);
+    background-color: var(--gray-100);
+    border: 1px solid var(--gray-200);
+    border-right: none;
+    border-radius: var(--radius-md) 0 0 var(--radius-md);
+  }
+
+  .form-control {
+    border-radius: 0 var(--radius-md) var(--radius-md) 0;
+    flex: 1;
+  }
+}
+
+.form-control,
+.form-select {
+  border: 1px solid var(--gray-200);
+  padding: 0.75rem 1rem;
+  font-size: 0.95rem;
+  border-radius: var(--radius-md);
+}
+
+.form-control:focus,
+.form-select:focus {
+  border-color: var(--gold);
+  box-shadow: 0 0 0 4px rgba(212, 168, 67, 0.1);
+  outline: none;
+}

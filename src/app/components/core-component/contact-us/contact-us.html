@@ -1,32 +1,94 @@
-<div class="container contact-container">
-  <div class="row">
-    <!-- Contact Info -->
-    <div class="col-md-5 contact-info">
-      <h3>Contact Information</h3>
-      <p><strong>Address:</strong> 123 Hotel Street, City, Country</p>
-      <p><strong>Phone:</strong> +91 98765 43210</p>
-      <p><strong>Email:</strong> contactedd.com</p>
-      <p><strong>Working Hours:</strong> 9:00 AM - 8:00 PM</p>
-    </div>
+<div class="contact-page">
+  <!-- Page Header -->
+  <div class="contact-header">
+    <h2 class="section-title animate-fade-up">Get in Touch</h2>
+    <p class="contact-subtitle animate-fade-up delay-1">We'd love to hear from you. Send us a message and we'll respond
+      as soon as possible.</p>
+  </div>
 
-    <!-- Contact Form -->
-    <div class="col-md-7 form-container">
-      <h3>Send Us a Message</h3>
-      <form [formGroup]="ContactUs"  (ngSubmit)="contectus()">
-        <div class="mb-3">
-          <label for="name" class="form-label">Full Name</label>
-          <input type="text" formControlName="fullname" class="form-control" id="name" placeholder="Your name">
+  <div class="container contact-container">
+    <div class="row g-4">
+      <!-- Contact Info -->
+      <div class="col-md-5 animate-fade-up delay-1">
+        <div class="contact-info">
+          <h3><i class="bi bi-chat-dots"></i> Contact Information</h3>
+          <div class="info-item">
+            <i class="bi bi-geo-alt-fill"></i>
+            <div>
+              <strong>Address</strong>
+              <p>Saffron Stays, Surat, Gujarat</p>
+            </div>
+          </div>
+          <div class="info-item">
+            <i class="bi bi-telephone-fill"></i>
+            <div>
+              <strong>Phone</strong>
+              <p>+91 98765 43210</p>
+            </div>
+          </div>
+          <div class="info-item">
+            <i class="bi bi-envelope-fill"></i>
+            <div>
+              <strong>Email</strong>
+              <p>contact&#64;saffronstays.com</p>
+            </div>
+          </div>
         </div>
-        <div class="mb-3">
-          <label for="email" class="form-label">Email address</label>
-          <input type="email" class="form-control" formControlName="email" id="email" placeholder="name@example.com">
+      </div>
+
+      <!-- Contact Form -->
+      <div class="col-md-7 animate-fade-up delay-2">
+        <div class="form-container">
+          <h3>Send Us a Message</h3>
+          <form [formGroup]="ContactUs" (ngSubmit)="contectus()">
+            <div class="form-group mb-3">
+              <label for="name" class="form-label"><i class="bi bi-person"></i> Full Name</label>
+              <input type="text" formControlName="fullname" class="form-control" id="name" placeholder="Your name"
+                [class.is-invalid]="ContactUs.get('fullname')?.invalid && ContactUs.get('fullname')?.touched">
+              @if (ContactUs.get('fullname')?.invalid && ContactUs.get('fullname')?.touched) {
+              <div class="invalid-feedback animate-fade-in">
+                @if (ContactUs.get('fullname')?.errors?.['required'] ) { <span>Please enter your name.</span> }
+                @if (ContactUs.get('fullname')?.errors?.['minlength']) { <span>Name must be at least 3
+                  characters.</span> }
+                @if (ContactUs.get('fullname')?.errors?.['pattern']) { <span>Please enter a valid name.</span> }
+              </div>
+              }
+            </div>
+
+            <div class="form-group mb-3">
+              <label for="email" class="form-label"><i class="bi bi-envelope"></i> Email address</label>
+              <input type="email" class="form-control" formControlName="email" id="email" placeholder="name@example.com"
+                [class.is-invalid]="ContactUs.get('email')?.invalid && ContactUs.get('email')?.touched">
+              @if (ContactUs.get('email')?.invalid && ContactUs.get('email')?.touched) {
+              <div class="invalid-feedback animate-fade-in">
+                @if (ContactUs.get('email')?.errors?.['required']) { <span>Email is required.</span> }
+                @if (ContactUs.get('email')?.errors?.['email']) { <span>Please enter a valid email.</span> }
+              </div>
+              }
+            </div>
+
+            <div class="form-group mb-3">
+              <label for="message" class="form-label"><i class="bi bi-chat-text"></i> Message</label>
+              <textarea class="form-control" id="message" formControlName="message" rows="4"
+                placeholder="Your message..."
+                [class.is-invalid]="ContactUs.get('message')?.invalid && ContactUs.get('message')?.touched"></textarea>
+              @if (ContactUs.get('message')?.invalid && ContactUs.get('message')?.touched) {
+              <div class="invalid-feedback animate-fade-in">
+                @if (ContactUs.get('message')?.errors?.['required']) { <span>Please tell us how we can help.</span> }
+                @if (ContactUs.get('message')?.errors?.['minlength']) { <span>Message must be at least 10
+                  characters.</span> }
+              </div>
+              }
+            </div>
+
+            <button type="submit" class="btn btn-primary w-100 py-3 mt-4"
+              [disabled]="ContactUs.invalid && ContactUs.touched">
+              <i class="bi bi-send"></i> Send Message
+            </button>
+          </form>
+
         </div>
-        <div class="mb-3">
-          <label for="message" class="form-label">Message</label>
-          <textarea class="form-control" id="message" formControlName="message" rows="4" placeholder="Your message..."></textarea>
-        </div>
-        <button type="submit" class="btn btn-primary">Send Message</button>
-      </form>
+      </div>
     </div>
   </div>
 </div>

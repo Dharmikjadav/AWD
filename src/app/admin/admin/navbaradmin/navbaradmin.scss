@@ -1,0 +1,179 @@
+.navbar {
+  background: var(--navy);
+  color: var(--cream);
+  position: fixed;
+  top: 0;
+  z-index: 1000;
+  height: 80px;
+  width: 100%;
+  border-bottom: 1px solid rgba(212, 168, 67, 0.15);
+  box-shadow: 0 2px 20px rgba(11, 29, 58, 0.3);
+  transition: all var(--duration-fast) var(--ease-out);
+  animation: navbarSlideDown 0.6s ease-out;
+}
+
+.navbar:hover {
+  box-shadow: 0 4px 25px rgba(212, 168, 67, 0.15);
+}
+  
+@keyframes navbarSlideDown {
+  from {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.logo {
+  font-size: 26px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  font-family: var(--font-heading);
+  color: var(--gold);
+  transition: all var(--duration-fast) var(--ease-out);
+  cursor: pointer;
+  text-shadow: 0 2px 8px rgba(212, 168, 67, 0.3);
+  animation: logoGlow 3s infinite alternate;
+}
+
+@keyframes logoGlow {
+  from {
+    text-shadow: 0 0 5px rgba(212,168,67,0.3);
+  }
+  to {
+    text-shadow: 0 0 20px rgba(212,168,67,0.8);
+  }
+}
+
+.logo:hover {
+  transform: scale(1.1);
+  color: var(--gold-light);
+  text-shadow: 0 4px 12px rgba(212, 168, 67, 0.5);
+}
+
+/* Nav Links */
+.nav-links {
+  gap: 10px;
+}
+
+.nav-links .nav-item .nav-link {
+  color: var(--cream);
+  text-decoration: none;
+  font-size: 15px;
+  font-weight: 500;
+  padding: 8px 12px !important;
+  position: relative;
+  transition: all var(--duration-fast) var(--ease-out);
+  border-radius: var(--radius-md);
+}
+
+.navbar-small {
+  height: 60px;
+  backdrop-filter: blur(20px);
+}
+
+.nav-links .nav-item .nav-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 0%;
+  height: 2px;
+  background: linear-gradient(90deg, var(--gold), var(--gold-light));
+  transition: width var(--duration-fast) var(--ease-out);
+  border-radius: var(--radius-full);
+}
+
+.nav-links .nav-item .nav-link.active {
+  color: var(--gold);
+}
+
+.nav-links .nav-item .nav-link:hover::after,
+.nav-links .nav-item .nav-link.active::after {
+  width: 100%;
+}
+
+/* Slight Lift on Hover */
+.nav-links .nav-item .nav-link:hover {
+  transform: translateY(-2px);
+  color: var(--gold);
+}
+
+.logout-btn {
+  background: transparent;
+  border: 1.5px solid var(--gold);
+  color: var(--gold);
+  padding: 8px 20px;
+  border-radius: var(--radius-full);
+  cursor: pointer;
+  font-weight: 500;
+  font-family: var(--font-body);
+  transition: all var(--duration-fast) var(--ease-out);
+  font-size: 14px;
+}
+
+.logout-btn:hover {
+  transform: translateY(-2px);
+  background: var(--gold);
+  color: var(--navy);
+  box-shadow: 0 4px 16px rgba(212, 168, 67, 0.3);
+}
+
+.logout-btn:active {
+  transform: translateY(0);
+}
+
+/* — Toggler — */
+.navbar-toggler {
+  border: 1px solid var(--gold) !important;
+  padding: 6px 10px;
+  color: var(--gold) !important;
+  font-size: 1.4rem;
+  transition: all 0.3s ease;
+}
+
+.navbar-toggler:focus {
+  box-shadow: 0 0 0 3px rgba(212, 168, 67, 0.25) !important;
+}
+
+.navbar-toggler i {
+  color: var(--gold);
+}
+
+
+/* Responsive Improvement */
+@media (max-width: 991.98px) {
+  .navbar {
+    height: auto;
+    padding: 10px 0;
+  }
+  
+  .navbar-collapse {
+    background: var(--navy-light);
+    padding: 20px;
+    border-radius: 0 0 var(--radius-md) var(--radius-md);
+    border-top: 1px solid rgba(212, 168, 67, 0.1);
+    margin-top: 5px;
+    max-height: calc(100vh - 80px);
+    overflow-y: auto;
+  }
+
+  .nav-links {
+    gap: 5px;
+  }
+  
+  .nav-links .nav-item .nav-link::after {
+    display: none;
+  }
+
+  .logo {
+    font-size: 20px;
+  }
+
+  .logout-btn {
+    padding: 10px 12px;
+  }
+}

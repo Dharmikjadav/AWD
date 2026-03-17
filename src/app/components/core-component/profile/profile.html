@@ -1,0 +1,78 @@
+<div class="profile-page">
+  <div class="container animate-fade-in">
+    <div class="profile-card animate-scale-in">
+      <div class="profile-header">
+        <div class="profile-avatar">
+          <i class="bi bi-person-circle"></i>
+        </div>
+        <h2>My Profile</h2>
+        <p>Manage your account details and security</p>
+      </div>
+
+      <form [formGroup]="editForm" (ngSubmit)="updateUser()">
+        <div class="form-group mb-4">
+          <label class="form-label"><i class="bi bi-person"></i> Full Name</label>
+
+          <input type="text" formControlName="fullname" class="form-control" placeholder="Update your name" />
+
+          <small class="text-danger"
+            *ngIf="editForm.controls['fullname'].touched && editForm.controls['fullname'].errors?.['required']">
+            Full name is required
+          </small>
+
+          <small class="text-danger" *ngIf="editForm.controls['fullname'].errors?.['minlength']">
+            Minimum 3 characters required
+          </small>
+
+          <small class="text-danger" *ngIf="editForm.controls['fullname'].errors?.['pattern']">
+            Only letters allowed
+          </small>
+        </div>
+
+        <div class="form-group mb-4">
+          <label class="form-label"><i class="bi bi-envelope"></i> Email</label>
+
+          <input type="email" formControlName="email" class="form-control" readonly />
+
+          <small class="text-danger" *ngIf="editForm.controls['email'].errors?.['email']">
+            Invalid email format
+          </small>
+        </div>
+
+        <div class="form-group mb-4">
+          <label class="form-label"><i class="bi bi-phone"></i> Phone Number</label>
+
+          <input type="text" formControlName="phone" class="form-control" placeholder="Update your phone" />
+
+          <small class="text-danger"
+            *ngIf="editForm.controls['phone'].touched && editForm.controls['phone'].errors?.['required']">
+            Phone number is required
+          </small>
+
+          <small class="text-danger" *ngIf="editForm.controls['phone'].errors?.['pattern']">
+            Enter a valid 10 digit phone number
+          </small>
+        </div>
+
+        <div class="form-group mb-4">
+          <label class="form-label"><i class="bi bi-lock"></i> Password</label>
+
+          <input type="password" formControlName="password" class="form-control" placeholder="Enter new password" />
+
+          <small class="text-danger"
+            *ngIf="editForm.controls['password'].touched && editForm.controls['password'].errors?.['required']">
+            Password is required
+          </small>
+
+          <small class="text-danger" *ngIf="editForm.controls['password'].errors?.['minlength']">
+            Minimum 6 characters required
+          </small>
+        </div>
+
+        <button type="submit" class="btn btn-primary w-100 py-3 mt-4" [disabled]="editForm.invalid">
+          <i class="bi bi-check-circle"></i> Save Changes
+        </button>
+      </form>
+    </div>
+  </div>
+</div>

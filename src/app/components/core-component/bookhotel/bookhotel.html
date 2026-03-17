@@ -1,0 +1,173 @@
+<div class="container py-5">
+
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+
+            <div class="card shadow-lg border-0 rounded-4">
+                <div class="card-body p-4">
+
+                    <h2 class="text-center mb-4">Book Your Stay</h2>
+
+                    <form [formGroup]="bookingForm" (ngSubmit)="payNow()">
+                        <label class="form-label">Name</label>
+                        <input type="text" formControlName="fullname" class="form-control"
+                            [ngClass]="{'is-invalid': f.fullname.invalid && (f.fullname.dirty || f.fullname.touched)}">
+
+                        <div *ngIf="f.fullname.invalid && (f.fullname.dirty || f.fullname.touched)"
+                            class="invalid-feedback">
+
+                            <div *ngIf="f.fullname.errors?.['required']">
+                                Full name is required
+                            </div>
+
+                            <div *ngIf="f.fullname.errors?.['minlength']">
+                                Minimum 3 characters required
+                            </div>
+
+                            <div *ngIf="f.fullname.errors?.['pattern']">
+                                Only letters are allowed
+                            </div>
+
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label">Email</label>
+
+                                <input type="email" formControlName="email" class="form-control"
+                                    [ngClass]="{'is-invalid': f.email.invalid && (f.email.dirty || f.email.touched)}" />
+
+                                <div *ngIf="f.email.invalid && (f.email.dirty || f.email.touched)"
+                                    class="invalid-feedback">
+
+                                    <div *ngIf="f.email.errors?.['required']">
+                                        Email is required
+                                    </div>
+
+                                    <div *ngIf="f.email.errors?.['email']">
+                                        Enter a valid email address
+                                    </div>
+
+                                </div>
+                            </div>
+
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label">Phone</label>
+
+                                <div class="input-group">
+                                    <span class="input-group-text bg-light border-end-0">+91</span>
+
+                                    <input type="tel" formControlName="phone" class="form-control"
+                                        placeholder="10-digit number"
+                                        [ngClass]="{'is-invalid': f.phone.invalid && (f.phone.dirty || f.phone.touched)}" />
+                                </div>
+
+                                <div *ngIf="f.phone.invalid && (f.phone.dirty || f.phone.touched)"
+                                    class="invalid-feedback d-block">
+
+                                    <div *ngIf="f.phone.errors?.['required']">
+                                        Phone number is required
+                                    </div>
+
+                                    <div *ngIf="f.phone.errors?.['pattern']">
+                                        Enter valid 10 digit phone number
+                                    </div>
+
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <!-- Dates Row -->
+                        <div class="row">
+
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label">Check-in Date & Time</label>
+
+                                <input type="datetime-local" formControlName="checkindate" class="form-control"
+                                    [min]="todayDatetime"
+                                    [ngClass]="{'is-invalid': f.checkindate.invalid && (f.checkindate.dirty || f.checkindate.touched)}">
+
+                                <div *ngIf="f.checkindate.invalid && (f.checkindate.dirty || f.checkindate.touched)"
+                                    class="invalid-feedback">
+                                    Check-in date is required
+                                </div>
+                            </div>
+
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label">Check-out Date & Time</label>
+
+                                <input type="datetime-local" formControlName="checkoutdate" class="form-control"
+                                    readonly>
+
+                            </div>
+
+                        </div>
+
+                        <!-- Guests & Room -->
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label">Guests</label>
+
+                                <select formControlName="guests" class="form-select"
+                                    [ngClass]="{'is-invalid': f.guests.invalid && (f.guests.dirty || f.guests.touched)}">
+
+                                    <option value="">Select</option>
+                                    <option value="1">1 Guest</option>
+                                    <option value="2">2 Guests</option>
+                                    <option value="3">3 Guests</option>
+                                    <option value="4+">4 or more</option>
+
+                                </select>
+
+                                <div *ngIf="f.guests.invalid && (f.guests.dirty || f.guests.touched)"
+                                    class="invalid-feedback">
+                                    Please select number of guests
+                                </div>
+                            </div>
+
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label">Selected Package</label>
+
+                                <div class="form-control bg-light">
+                                    {{ selectedPackageName }}
+                                </div>
+
+                                <div *ngIf="f.package_name.invalid && (f.package_name.dirty || f.package_name.touched)"
+                                    class="invalid-feedback">
+                                    Please select a package
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Hotel Selection -->
+                        <div class="mb-3">
+
+                            <label class="form-label">Selected Hotel</label>
+
+                            <div class="form-control bg-light">
+                                {{ selectedHotelName }}
+                            </div>
+                        </div>
+
+                        <div *ngIf="f.hotel.invalid && (f.hotel.dirty || f.hotel.touched)" class="invalid-feedback">
+                            Hotel selection is required
+                        </div>
+
+
+                        <!-- Submit -->
+                        <button type="submit" class="btn btn-primary w-100 rounded-pill py-2">
+                            Proceed to Pay
+                        </button>
+
+
+
+                    </form>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</div>

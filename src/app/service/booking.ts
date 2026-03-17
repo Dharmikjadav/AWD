@@ -7,7 +7,7 @@ import { AuthService } from './auth.service';
 export class Booking {
   private apiUrl = environment.apiUrl;
 
-  constructor(private http: HttpClient, private authService: AuthService) {}
+  constructor(private http: HttpClient, private authService: AuthService) { }
 
   AddBooking(request: any) {
     const token = this.authService.getToken();
@@ -21,10 +21,22 @@ export class Booking {
     return this.http.post<any>(`${this.apiUrl}/add-booking`, request, { headers });
   }
 
-  contect(request : any){
+  getBookings() {
+    return this.http.get<any>(`${this.apiUrl}/get-hotel-booking`);
+  }
+
+  deleteBookings(id: string) {
+    return this.http.delete(`${this.apiUrl}/deletebooking/${id}`);
+  }
+
+  updateBookingStatus(id: string, status: string) {
+    return this.http.put(`${this.apiUrl}/update-booking-status/${id}`, { status });
+  }
+
+  contect(request: any) {
     const headers = new HttpHeaders({
       'Content-Type': 'application/json'
     });
-    return this.http.post<any>(`${this.apiUrl}/contact`,request,{headers});
+    return this.http.post<any>(`${this.apiUrl}/contact`, request, { headers });
   }
 }

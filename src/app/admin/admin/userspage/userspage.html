@@ -1,0 +1,127 @@
+<div class="table-container">
+
+  <h2>User Data</h2>
+
+  <table>
+
+    <thead>
+      <tr>
+        <th>No</th>
+        <th>Full Name</th>
+        <th>Email</th>
+        <th>Phone</th>
+        <th>Password</th>
+        <th>Confirm Password</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      @for (item of users; let idx = $index;track item ; ) {
+      <tr>
+        <td>{{ idx + 1 }}</td>
+        <td>{{ item.fullname }}</td>
+        <td>{{ item.email }}</td>
+        <td>{{ item.phone }}</td>
+
+        <!-- Hidden Password -->
+        <td>••••••••</td>
+        <td>••••••••</td>
+        <td>
+          <!-- <button type="button" class="btn btn-primary" (click)="editUser(item)" data-toggle="modal"
+            data-target="#exampleModal">
+            Edit
+          </button> -->
+          <button type="button" class="btn btn-danger m-2" (click)="deleteUser(item)">
+            Delete
+          </button>
+        </td>
+
+      </tr>
+      }
+    </tbody>
+
+  </table>
+
+</div>
+
+<!-- <div class="modal-overlay" *ngIf="editmode"> -->
+
+<!-- Popup Box -->
+<!-- <div class="modal-box">
+
+    <h2>Edit User</h2>
+
+    <form [formGroup]="editForm" (ngSubmit)="updateUser()">
+
+      <input type="text" formControlName="fullname" placeholder="Full Name">
+
+      <input type="email" formControlName="email" placeholder="Email">
+
+      <input type="text" formControlName="phone" placeholder="Phone">
+
+      <input type="password" formControlName="password" placeholder="Password">
+
+      <input type="password" formControlName="confirmPassword" placeholder="Confirm Password">
+
+      <div class="btn-group">
+
+        <button type="submit" class="update-btn">
+          Update
+        </button>
+
+        <button type="button" class="cancel-btn" (click)="closePopup()">
+          Cancel
+        </button>
+
+      </div>
+
+    </form>
+
+  </div>
+</div> -->
+
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Edit User</h5>
+        <button type="button" class="close m-2" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="editForm" (ngSubmit)="updateUser()">
+          <div class="form-group">
+            <input type="text" class="form-control m-2" formControlName="fullname" placeholder="Full Name"
+              [ngClass]="{'is-invalid': editForm.get('fullname')?.invalid && editForm.get('fullname')?.touched}">
+            <div class="text-danger ms-2" *ngIf="editForm.get('fullname')?.invalid && editForm.get('fullname')?.touched"><small>Full Name is required</small></div>
+
+            <input type="email" class="form-control m-2" formControlName="email" placeholder="Email"
+              [ngClass]="{'is-invalid': editForm.get('email')?.invalid && editForm.get('email')?.touched}">
+            <div class="text-danger ms-2" *ngIf="editForm.get('email')?.invalid && editForm.get('email')?.touched">
+               <small *ngIf="editForm.get('email')?.errors?.['required']">Email is required</small>
+               <small *ngIf="editForm.get('email')?.errors?.['email']">Enter a valid email</small>
+            </div>
+
+            <input type="text" class="form-control m-2" formControlName="phone" placeholder="Phone"
+              [ngClass]="{'is-invalid': editForm.get('phone')?.invalid && editForm.get('phone')?.touched}">
+            <div class="text-danger ms-2" *ngIf="editForm.get('phone')?.invalid && editForm.get('phone')?.touched">
+               <small *ngIf="editForm.get('phone')?.errors?.['required']">Phone is required</small>
+               <small *ngIf="editForm.get('phone')?.errors?.['pattern']">Must be a valid 10-digit number</small>
+            </div>
+
+            <input type="password" class="form-control m-2" formControlName="password" placeholder="New Password (optional)">
+
+            <input type="password" class="form-control m-2" formControlName="confirmPassword" placeholder="Confirm New Password">
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" (click)="updateUser()">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>

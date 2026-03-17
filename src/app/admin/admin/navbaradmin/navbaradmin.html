@@ -1,0 +1,32 @@
+
+<nav class="navbar navbar-expand-lg">
+  <div class="container-fluid px-3">
+    <!-- Brand -->
+    <a class="navbar-brand logo" routerLink="/admin/dashboard">
+      Admin Panel
+    </a>
+
+    <!-- Hamburger Menu -->
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#adminNavMenu"
+      aria-controls="adminNavMenu" aria-expanded="false" aria-label="Toggle navigation">
+      <i class="bi bi-list"></i>
+    </button>
+
+    <!-- Collapsible Content -->
+    <div class="collapse navbar-collapse" id="adminNavMenu">
+      <ul class="navbar-nav ms-auto nav-links">
+        <li class="nav-item"><a class="nav-link" routerLink="/admin/dashboard" routerLinkActive="active" (click)="closeNavbar()">Dashboard</a></li>
+        <li class="nav-item"><a class="nav-link" routerLink="/admin/userspage" routerLinkActive="active" (click)="closeNavbar()">Users</a></li>
+        <li class="nav-item"><a class="nav-link" routerLink="/admin/hoteldata" routerLinkActive="active" (click)="closeNavbar()">Hotels</a></li>
+        <li class="nav-item"><a class="nav-link" routerLink="/admin/packages" routerLinkActive="active" (click)="closeNavbar()">Packages</a></li>
+        <li class="nav-item"><a class="nav-link" routerLink="/admin/bookings" routerLinkActive="active" (click)="closeNavbar()">Bookings</a></li>
+      </ul>
+
+      <div class="ms-lg-4 mt-3 mt-lg-0">
+        <button class="logout-btn w-100 w-lg-auto" (click)="logout()">
+          <i class="bi bi-box-arrow-right"></i> Logout
+        </button>
+      </div>
+    </div>
+  </div>
+</nav>

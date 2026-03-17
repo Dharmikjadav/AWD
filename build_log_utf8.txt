@@ -1,0 +1,230 @@
+﻿[33mΓ¥»[39m Building...
+[32mΓ£ö[39m Building...
+Application bundle generation failed. [3.405 seconds]
+
+node.exe : [1m[31m[31mX 
+[41;31m[[41;97mERROR[41;31m][0m 
+[1mNG5002: Incomplete block 
+"saffronstays". If you meant to write 
+the @ character, you should use the 
+"&#64;" HTML entity instead.[0m 
+[1m[35m[plugin angular-compiler][0m
+At line:1 char:1
++ & "C:\Program Files\nodejs/node.exe" 
+"C:\Program Files\nodejs/node_mo ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecif 
+   ied: ([1m[31m[31mX...r-compiler]  
+  [0m:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCom 
+   mandError
+ 
+
+    src/app/components/core-component/co
+ntact-us/contact-us.html:39:27:
+[37m      39 Γöé             <p>reserva
+tions[32m@saffronstays[37m.com<br>supp
+ort@saffronsta...
+         Γò╡                            
+[32m~~~~~~~~~~~~~[0m
+
+  Error occurs in the template of 
+component ContactUs.
+
+    src/app/components/core-component/co
+ntact-us/contact-us.ts:11:15:
+[37m      11 Γöé   templateUrl: 
+[32m'./contact-us.html'[37m,
+         Γò╡                
+[32m~~~~~~~~~~~~~~~~~~~[0m
+
+
+[31mX 
+[41;31m[[41;97mERROR[41;31m][0m 
+[1mNG5002: Incomplete block 
+"saffronstays". If you meant to write 
+the @ character, you should use the 
+"&#64;" HTML entity instead.[0m 
+[1m[35m[plugin angular-compiler][0m
+
+    src/app/components/core-component/co
+ntact-us/contact-us.html:39:55:
+[37m      39 Γöé ...  <p>reservations@s
+affronstays.com<br>support[32m@saffrons
+tays[37m.com</p>
+         Γò╡                            
+                     
+[32m~~~~~~~~~~~~~[0m
+
+  Error occurs in the template of 
+component ContactUs.
+
+    src/app/components/core-component/co
+ntact-us/contact-us.ts:11:15:
+[37m      11 Γöé   templateUrl: 
+[32m'./contact-us.html'[37m,
+         Γò╡                
+[32m~~~~~~~~~~~~~~~~~~~[0m
+
+
+[31mX 
+[41;31m[[41;97mERROR[41;31m][0m 
+[1mNG5002: Incomplete block 
+"saffronstays". If you meant to write 
+the @ character, you should use the 
+"&#64;" HTML entity instead.[0m 
+[1m[35m[plugin angular-compiler][0m
+
+    src/app/components/core-component/fo
+oter/footer.html:65:37:
+[37m      65 Γöé             <span clas
+s="small">hello[32m@saffronstays[37m.c
+om</span>
+         Γò╡                            
+          [32m~~~~~~~~~~~~~[0m
+
+  Error occurs in the template of 
+component Footer.
+
+    src/app/components/core-component/fo
+oter/footer.ts:8:15:
+[37m      8 Γöé   templateUrl: 
+[32m'./footer.html'[37m,
+        Γò╡                
+[32m~~~~~~~~~~~~~~~[0m
+
+
+[31mX 
+[41;31m[[41;97mERROR[41;31m][0m 
+[1mTS4111: Property 'fullname' comes 
+from an index signature, so it must be 
+accessed with ['fullname'].[0m 
+[1m[35m[plugin angular-compiler][0m
+
+    src/app/components/core-component/re
+gistration/registration.html:50:60:
+[37m      50 Γöé ...is-invalid': 
+submitted && 
+f.[32mfullname[37m.errors }" 
+placeholder="Joh...
+         Γò╡                            
+    [32m~~~~~~~~[0m
+
+  Error occurs in the template of 
+component Registration.
+
+    src/app/components/core-component/re
+gistration/registration.ts:12:15:
+[37m      12 Γöé   templateUrl: 
+[32m'./registration.html'[37m,
+         Γò╡                
+[32m~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+[31mX 
+[41;31m[[41;97mERROR[41;31m][0m 
+[1mTS4111: Property 'email' comes from 
+an index signature, so it must be 
+accessed with ['email'].[0m 
+[1m[35m[plugin angular-compiler][0m
+
+    src/app/components/core-component/re
+gistration/registration.html:58:60:
+[37m      58 Γöé ...'is-invalid': 
+submitted && f.[32memail[37m.errors 
+}" placeholder="john@...
+         Γò╡                            
+     [32m~~~~~[0m
+
+  Error occurs in the template of 
+component Registration.
+
+    src/app/components/core-component/re
+gistration/registration.ts:12:15:
+[37m      12 Γöé   templateUrl: 
+[32m'./registration.html'[37m,
+         Γò╡                
+[32m~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+[31mX 
+[41;31m[[41;97mERROR[41;31m][0m 
+[1mTS4111: Property 'phone' comes from 
+an index signature, so it must be 
+accessed with ['phone'].[0m 
+[1m[35m[plugin angular-compiler][0m
+
+    src/app/components/core-component/re
+gistration/registration.html:66:60:
+[37m      66 Γöé ...'is-invalid': 
+submitted && f.[32mphone[37m.errors 
+}" placeholder="12345...
+         Γò╡                            
+     [32m~~~~~[0m
+
+  Error occurs in the template of 
+component Registration.
+
+    src/app/components/core-component/re
+gistration/registration.ts:12:15:
+[37m      12 Γöé   templateUrl: 
+[32m'./registration.html'[37m,
+         Γò╡                
+[32m~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+[31mX 
+[41;31m[[41;97mERROR[41;31m][0m 
+[1mTS4111: Property 'password' comes 
+from an index signature, so it must be 
+accessed with ['password'].[0m 
+[1m[35m[plugin angular-compiler][0m
+
+    src/app/components/core-component/re
+gistration/registration.html:74:60:
+[37m      74 Γöé ...is-invalid': 
+submitted && 
+f.[32mpassword[37m.errors }" 
+placeholder="ΓÇó...
+         Γò╡                            
+    [32m~~~~~~~~[0m
+
+  Error occurs in the template of 
+component Registration.
+
+    src/app/components/core-component/re
+gistration/registration.ts:12:15:
+[37m      12 Γöé   templateUrl: 
+[32m'./registration.html'[37m,
+         Γò╡                
+[32m~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+[31mX 
+[41;31m[[41;97mERROR[41;31m][0m 
+[1mTS4111: Property 'confirmPassword' 
+comes from an index signature, so it 
+must be accessed with 
+['confirmPassword'].[0m 
+[1m[35m[plugin angular-compiler][0m
+
+    src/app/components/core-component/re
+gistration/registration.html:82:60:
+[37m      82 Γöé ...nvalid': submitted 
+&& f.[32mconfirmPassword[37m.errors 
+}" placeholder="...
+         Γò╡                            
+[32m~~~~~~~~~~~~~~~[0m
+
+  Error occurs in the template of 
+component Registration.
+
+    src/app/components/core-component/re
+gistration/registration.ts:12:15:
+[37m      12 Γöé   templateUrl: 
+[32m'./registration.html'[37m,
+         Γò╡                
+[32m~~~~~~~~~~~~~~~~~~~~~[0m
+
+[39m[22m

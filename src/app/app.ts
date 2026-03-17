@@ -4,10 +4,13 @@ import { FormsModule } from '@angular/forms';
 import { Navbar } from "./components/core-component/navbar/navbar";
 import { Footer } from "./components/core-component/footer/footer";
 import { AuthService } from './service/auth.service';
+import { Dashboard } from "./admin/admin/dashboard/dashboard";
+import { ADMIN_ROUTES } from './admin/admin/admin.routs';
+import { Navbaradmin } from './admin/admin/navbaradmin/navbaradmin';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, Navbar, Footer],
+  imports: [RouterOutlet, Navbar, Footer, Navbaradmin],
   templateUrl: './app.html',
   styleUrl: './app.scss'
 })

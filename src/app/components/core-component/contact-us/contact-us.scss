@@ -1,26 +1,164 @@
-body {
-    background-color: #f8f9fa;
+/* ===========================================
+   CONTACT US — Premium Design
+   =========================================== */
+
+.contact-page {
+    background: var(--cream);
+    min-height: 80vh;
 }
 
+/* Header */
+.contact-header {
+    text-align: center;
+    padding: 60px 20px 20px;
+}
+
+.contact-header .section-title {
+    font-family: var(--font-heading);
+    color: var(--navy);
+    font-size: 2.2rem;
+    margin-bottom: 12px;
+}
+
+.contact-subtitle {
+    color: var(--gray-500) !important;
+    font-size: 1rem;
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+/* Container */
 .contact-container {
-    margin-top: 50px;
-    margin-bottom: 50px;
+    padding: 30px 0 80px;
 }
 
+/* Info Panel */
 .contact-info {
-    background-color: #007BFF;
-    color: white;
-    padding: 30px;
-    border-radius: 10px;
+    background: linear-gradient(135deg, var(--navy), var(--navy-light));
+    color: var(--white);
+    padding: 40px 32px;
+    border-radius: var(--radius-lg);
+    height: 100%;
+    position: relative;
+    overflow: hidden;
 }
 
+.contact-info::before {
+    content: "";
+    position: absolute;
+    top: -40%;
+    right: -30%;
+    width: 300px;
+    height: 300px;
+    background: radial-gradient(circle, rgba(212, 168, 67, 0.12) 0%, transparent 70%);
+    border-radius: 50%;
+}
+
+.contact-info h3 {
+    font-family: var(--font-heading) !important;
+    color: var(--gold) !important;
+    font-size: 1.3rem;
+    margin-bottom: 28px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.contact-info h3 i {
+    color: var(--gold-light);
+}
+
+.info-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    margin-bottom: 22px;
+    position: relative;
+    z-index: 1;
+}
+
+.info-item>i {
+    color: var(--gold);
+    font-size: 1.1rem;
+    margin-top: 2px;
+    flex-shrink: 0;
+}
+
+.info-item strong {
+    display: block;
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 0.85rem;
+    margin-bottom: 2px;
+}
+
+.info-item p {
+    color: rgba(255, 255, 255, 0.6) !important;
+    font-size: 0.9rem;
+    margin: 0;
+}
+
+/* Form Panel */
 .form-container {
-    background-color: white;
-    padding: 30px;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background: var(--white);
+    padding: 40px 32px;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-lg);
+    border: 1px solid rgba(212, 168, 67, 0.08);
+    height: 100%;
 }
 
-.form-control:focus {
-    box-shadow: none;
+.form-container h3 {
+    font-family: var(--font-heading) !important;
+    color: var(--navy) !important;
+    font-size: 1.3rem;
+    margin-bottom: 24px;
+}
+
+.form-container .form-group {
+    margin-bottom: 18px;
+}
+
+.form-container .form-label {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.form-container .form-label i {
+    color: var(--gold);
+    font-size: 0.85rem;
+}
+
+/* Validation Styles */
+.form-container .form-control.is-invalid {
+    border-color: #dc3545;
+    background-image: none;
+    /* Hide default bootstrap icon if needed */
+}
+
+.invalid-feedback {
+    font-size: 0.8rem;
+    color: #dc3545;
+    margin-top: 4px;
+    display: block;
+}
+
+.btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    background-color: var(--gray-300);
+    border-color: var(--gray-300);
+}
+
+
+/* Mobile */
+@media (max-width: 767.98px) {
+    .contact-header {
+        padding: 40px 20px 10px;
+    }
+
+    .contact-info,
+    .form-container {
+        padding: 28px 20px;
+    }
 }
