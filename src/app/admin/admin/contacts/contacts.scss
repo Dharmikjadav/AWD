@@ -1,0 +1,78 @@
+/* ===== Modern Table Container ===== */
+.table-container {
+  width: 92%;
+  margin: var(--space-3xl) auto;
+  background: var(--white);
+  padding: var(--space-3xl);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  font-family: var(--font-body);
+  transition: all var(--duration-fast) var(--ease-out);
+  overflow-x: auto;
+}
+
+/* ===== Title ===== */
+h2 {
+  text-align: center;
+  background: linear-gradient(90deg, var(--info), var(--navy-dark));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-size: 1.75rem;
+  margin-bottom: var(--space-3xl);
+  font-weight: 600;
+  font-family: var(--font-heading);
+}
+
+/* ===== Table ===== */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  overflow: hidden;
+  border-radius: 14px;
+}
+
+/* Header */
+thead {
+  background: var(--navy);
+  color: var(--cream);
+}
+
+th {
+  padding: 16px;
+  text-align: left;
+  font-weight: 600;
+  font-size: 14px;
+  letter-spacing: 0.5px;
+}
+
+/* Table Data */
+td {
+  padding: 14px;
+  border-bottom: 1px solid var(--gray-200);
+  color: var(--gray-600);
+  font-size: 0.875rem;
+}
+
+/* Row Hover Animation */
+tr {
+  transition: all 0.25s ease;
+}
+
+tbody tr:hover {
+  background: var(--gray-50);
+  transform: scale(1.01);
+  box-shadow: var(--shadow-sm);
+}
+
+@media (max-width: 768px) {
+  .table-container {
+    width: 96%;
+    padding: var(--space-lg);
+  }
+
+  table {
+    min-width: 700px;
+  }
+}
+

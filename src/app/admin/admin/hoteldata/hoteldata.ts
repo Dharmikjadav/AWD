@@ -16,11 +16,15 @@ export class Hoteldata {
   searchTerm: string = '';
   selectedHotel: any = null;
   addhotel!: FormGroup;
-  // editform!: FormGroup;
   hotels: any[] = [];
-  base64Image: string = '';
   isloading = true;
   editmode = false;
+
+  selectedFile: File | null = null;
+  imagePreviewUrl: string = '';
+  private allowedTypes = ['image/jpeg', 'image/png'];
+  private maxFileSizeBytes = 5 * 1024 * 1024;
+
   constructor(private hotleservice: Hotelsdata, private fb: FormBuilder) { }
 
 
@@ -43,29 +47,52 @@ export class Hoteldata {
   }
 
   onFileSelected(event: any) {
-    const file = event.target.files[0];
+    const file = event.target.files?.[0];
 
-    if (file) {
-      const reader = new FileReader();
+    if (!file) return;
 
-      reader.onload = () => {
-        this.base64Image = reader.result as string;
-        console.log(this.base64Image);
-      };
+    if (!this.allowedTypes.includes(file.type)) {
+      Swal.fire({
+        icon: 'error',
+        title: 'Invalid File Type',
+        text: 'Only JPG and PNG images are allowed.'
+      });
+      this.resetFileSelection(event);
+      return;
+    }
 
-      reader.readAsDataURL(file);
+    if (file.size > this.maxFileSizeBytes) {
+      Swal.fire({
+        icon: 'error',
+        title: 'File Too Large',
+        text: 'Max file size is 5 MB.'
+      });
+      this.resetFileSelection(event);
+      return;
+    }
+
+    this.selectedFile = file;
+    if (this.imagePreviewUrl) {
+      URL.revokeObjectURL(this.imagePreviewUrl);
+    }
+    this.imagePreviewUrl = URL.createObjectURL(file);
+  }
+
+  private resetFileSelection(event?: any) {
+    this.selectedFile = null;
+    if (this.imagePreviewUrl) {
+      URL.revokeObjectURL(this.imagePreviewUrl);
+    }
+    this.imagePreviewUrl = '';
+    if (event?.target) {
+      event.target.value = '';
     }
   }
 
-
-
-
   ngOnInit() {
     this.addhotel = this.fb.group({
-      // image_url: ['', [Validators.required]],
       hotel_name: ['', [Validators.required, Validators.minLength(3)]],
       location: ['', [Validators.required]],
-      // price_per_night: ['', [Validators.required, Validators.pattern("^[0-9]*$")]],
       amenities: ['', [Validators.required]]
     });
     this.gethotels();
@@ -75,7 +102,7 @@ export class Hoteldata {
   openAddModal() {
     this.editmode = false;
     this.selectedHotel = null;
-    this.base64Image = '';
+    this.resetFileSelection();
     this.addhotel.reset();
 
     // show bootstrap modal programmatically instead of relying on attributes
@@ -106,18 +133,28 @@ export class Hoteldata {
       return;
     }
 
+    if (!this.selectedFile) {
+      Swal.fire({
+        icon: 'error',
+        title: 'Image Required',
+        text: 'Please select an image to upload.'
+      });
+      return;
+    }
+
     const formvalue = this.addhotel.value;
 
-    const payload = {
-      image_url: this.base64Image,
-      hotel_name: formvalue.hotel_name,
-      location: formvalue.location,
-      amenities: formvalue.amenities
+    const formData = new FormData();
+    formData.append('image', this.selectedFile);
+    formData.append('hotel_name', formvalue.hotel_name);
+    formData.append('location', formvalue.location);
+    formData.append('amenities', JSON.stringify(
+      formvalue.amenities
         ? formvalue.amenities.split(',').map((a: string) => a.trim())
         : []
-    };
+    ));
 
-    this.hotleservice.addhotel(payload).subscribe({
+    this.hotleservice.addhotel(formData).subscribe({
       next: (res) => {
         Swal.fire({
           icon: 'success',
@@ -125,6 +162,7 @@ export class Hoteldata {
           text: 'Hotel added successfully'
         });
         this.addhotel.reset();
+        this.resetFileSelection();
         this.hideAddModal();
         this.gethotels();
       }
@@ -135,9 +173,7 @@ export class Hoteldata {
     this.hotleservice.gethotels().subscribe((data: any) => {
       this.hotels = data.hotels.map((hotel: any) => ({
         ...hotel,
-        image_url: hotel.image_url.startsWith('data')
-          ? hotel.image_url
-          : 'data:image/jpeg;base64,' + hotel.image_url
+        image_src: this.hotleservice.resolveImageUrl(hotel.image_url)
       }));
       this.isloading = false;
     });
@@ -147,13 +183,11 @@ export class Hoteldata {
     debugger;
     this.editmode = true;
     this.selectedHotel = hotel;
-    this.base64Image = hotel.image_url;
+    this.resetFileSelection();
     console.log(this.selectedHotel);
     this.addhotel.patchValue({
-      // image_url: this.selectedHotel.image_url,
       hotel_name: this.selectedHotel.hotel_name,
       location: this.selectedHotel.location,
-      // price_per_night: this.selectedHotel.price_per_night,
       amenities: this.selectedHotel.amenities?.join(', ') || ''
     });
 
@@ -169,17 +203,22 @@ export class Hoteldata {
     }
     const formvalue = this.addhotel.value;
     console.log(formvalue);
-    const payload = {
-      image_url: this.base64Image || this.selectedHotel.image_url,
-      hotel_name: formvalue.hotel_name,
-      location: formvalue.location,
-      // price_per_night: Number(formvalue.price_per_night),
-      amenities: formvalue.amenities
+
+    const formData = new FormData();
+    if (this.selectedFile) {
+      formData.append('image', this.selectedFile);
+    } else if (this.selectedHotel?.image_url) {
+      formData.append('image_url', this.selectedHotel.image_url);
+    }
+    formData.append('hotel_name', formvalue.hotel_name);
+    formData.append('location', formvalue.location);
+    formData.append('amenities', JSON.stringify(
+      formvalue.amenities
         ? formvalue.amenities.split(',').map((a: string) => a.trim())
         : []
-    };
+    ));
 
-    this.hotleservice.updatehotel(this.selectedHotel._id, payload).subscribe({
+    this.hotleservice.updatehotel(this.selectedHotel._id, formData).subscribe({
       next: (res) => {
         Swal.fire({
           icon: 'success',
@@ -188,6 +227,7 @@ export class Hoteldata {
         });
         console.log(res);
         this.addhotel.reset();
+        this.resetFileSelection();
         this.hideAddModal();
         this.gethotels();
       },
@@ -236,5 +276,3 @@ export class Hoteldata {
 // function viewchild(arg0: string): (target: Hoteldata, propertyKey: "closeModal") => void {
 //   throw new Error('Function not implemented.');
 // }
-
-

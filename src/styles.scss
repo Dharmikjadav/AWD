@@ -3,7 +3,7 @@
    =========================================== */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap');
 body {
-  padding-top: 80px;
+  padding-top: 0;
 }
 
 :root {
@@ -548,6 +548,53 @@ a:hover {
 .toast-error {
   background-color: var(--navy) !important;
   border-left: 4px solid var(--error) !important;
+}
+
+
+
+/* ===========================================
+   RESPONSIVE BASE
+   =========================================== */
+img,
+video,
+canvas,
+svg {
+  max-width: 100%;
+  height: auto;
+}
+
+.table-responsive,
+.table-scroll {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.modal-dialog {
+  margin: 1rem auto;
+}
+
+@media (max-width: 991.98px) {
+  body {
+    padding-top: 72px;
+  }
+}
+
+@media (max-width: 767.98px) {
+  .container {
+    padding-left: 16px !important;
+    padding-right: 16px !important;
+  }
+
+  .admin-container {
+    padding: 24px !important;
+  }
+}
+
+@media (max-width: 575.98px) {
+  .modal-dialog {
+    margin: 0.75rem;
+  }
 }
 
 /* ===========================================

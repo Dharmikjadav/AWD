@@ -5,6 +5,7 @@ import { AuthService } from '../../../service/auth.service';
 import { Router, RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { Hotelsdata } from '../../../service/hotelsdata';
+import { Packagesservice } from '../../../service/packagesservice';
 declare var bootstrap: any;
 
 @Component({
@@ -19,6 +20,17 @@ export class Dashboard implements OnInit, AfterViewInit {
   successMessage: string | null = null;
   hotelNames: string[] = [];
   filteredHotels: string[] = [];
+
+  hotelsPreview: any[] = [];
+  packagesPreview: any[] = [];
+  facilitiesPreview = [
+    { title: 'Luxury Rooms', img: 'image/hotel_room.webp', description: 'Spacious rooms with elegant interiors.' },
+    { title: 'Event Spaces', img: 'image/cover_img3.jpg', description: 'Perfect for weddings and celebrations.' },
+    { title: 'Nature Views', img: 'image/environment.webp', description: 'Peaceful surroundings and greenery.' },
+    { title: 'Pool & Spa', img: 'image/swimming_pool.avif', description: 'Relax with premium wellness facilities.' },
+    { title: 'Restaurant', img: 'image/restuarant.png', description: 'Fine dining and local flavors.' },
+    { title: 'Secure Parking', img: 'image/parking.jpg', description: 'Safe, convenient parking on-site.' }
+  ];
 
   bookingForm = new FormGroup({
     fullname: new FormControl(''),
@@ -35,6 +47,7 @@ export class Dashboard implements OnInit, AfterViewInit {
     private fb: FormBuilder,
     public booking: Booking,
     private hotelService: Hotelsdata,
+    private packageService: Packagesservice,
     private authService: AuthService,
     private router: Router
   ) { }
@@ -53,6 +66,10 @@ export class Dashboard implements OnInit, AfterViewInit {
       },
       { validators: this.checkOutAfterCheckIn }
     );
+
+    this.loadHotels();
+    this.loadHotelPreview();
+    this.loadPackagePreview();
 
     const modalEl = document.getElementById('exampleModalCenter');
     if (modalEl) {
@@ -122,6 +139,24 @@ export class Dashboard implements OnInit, AfterViewInit {
     });
   }
 
+
+  loadHotelPreview() {
+    this.hotelService.gethotels().subscribe((data: any) => {
+      const list = data?.hotels || [];
+      this.hotelsPreview = list.slice(0, 6).map((hotel: any) => ({
+        ...hotel,
+        image_src: this.hotelService.resolveImageUrl(hotel.image_url)
+      }));
+    });
+  }
+
+  loadPackagePreview() {
+    this.packageService.getPackages().subscribe((data: any) => {
+      const list = data?.packages || data || [];
+      this.packagesPreview = list.slice(0, 3);
+    });
+  }
+
   loadHotels() {
     this.hotelService.gethotels1().subscribe(data => {
       this.hotelNames = data.map(hotel => hotel.hotel_name);
@@ -144,6 +179,10 @@ export class Dashboard implements OnInit, AfterViewInit {
   }
 
   closeModal() {
+    this.loadHotels();
+    this.loadHotelPreview();
+    this.loadPackagePreview();
+
     const modalEl = document.getElementById('exampleModalCenter');
     if (modalEl) {
       const modalInstance = bootstrap.Modal.getInstance(modalEl)

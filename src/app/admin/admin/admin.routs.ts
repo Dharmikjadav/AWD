@@ -5,6 +5,7 @@ import { Navbaradmin } from './navbaradmin/navbaradmin';
 import { Hoteldata } from './hoteldata/hoteldata';
 import { Packages } from './packages/packages';
 import { Userbookings } from './userbookings/userbookings';
+import { Contacts } from './contacts/contacts';
 
 export const ADMIN_ROUTES: Routes = [
   { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
@@ -13,5 +14,6 @@ export const ADMIN_ROUTES: Routes = [
   { path: 'userspage',   component: Userspage },
   { path: 'hoteldata',   component: Hoteldata },
   { path : 'packages', component: Packages },
-  { path : 'bookings', component: Userbookings }
+  { path : 'bookings', component: Userbookings },
+  { path : 'contacts', component: Contacts }
 ];

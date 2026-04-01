@@ -187,3 +187,29 @@ tbody tr:hover {
     opacity: 1;
   }
 }
+
+@media (max-width: 768px) {
+  .table-container {
+    width: 96%;
+    padding: var(--space-lg);
+  }
+
+  table {
+    min-width: 700px;
+  }
+
+  .modal-box {
+    width: min(92vw, 420px);
+    padding: 20px;
+  }
+
+  .btn-group {
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 575.98px) {
+  .modal-box {
+    width: 94vw;
+  }
+}

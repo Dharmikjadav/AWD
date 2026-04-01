@@ -69,6 +69,12 @@
               </div>
             </div>
           </div>
+
+          <div class="forgot-row">
+            <button type="button" class="forgot-link" (click)="openForgotPassword()">
+              Forgot password?
+            </button>
+          </div>
         </div>
         }
 
@@ -116,6 +122,27 @@
 
     </div>
   </div>
+
+
+  <!-- Forgot Password Overlay -->
+  @if (showForgotModal) {
+  <div class="forgot-overlay" (click)="closeForgotPassword()">
+    <div class="forgot-card" (click)="$event.stopPropagation()">
+      <div class="forgot-header">
+        <h4>Reset Password</h4>
+        <button type="button" class="btn-close" (click)="closeForgotPassword()"></button>
+      </div>
+      <p class="forgot-subtext">Enter your registered email to receive a reset link.</p>
+      <div class="form-group">
+        <label class="form-label">Email</label>
+        <input type="email" class="form-control" [(ngModel)]="forgotEmail" placeholder="you@example.com">
+      </div>
+      <button type="button" class="btn btn-primary w-100" (click)="sendPasswordReset()" [disabled]="isSendingReset">
+        {{ isSendingReset ? 'Sending...' : 'Send Reset Link' }}
+      </button>
+    </div>
+  </div>
+  }
 
   <!-- Loading Animation Overlay -->
   @if (isLoading) {

@@ -31,6 +31,11 @@ export class UserLogin {
   isSendingOtp: boolean = false;
   isLoading: boolean = false;
 
+  // Forgot password states
+  showForgotModal: boolean = false;
+  forgotEmail: string = '';
+  isSendingReset: boolean = false;
+
   constructor(
     private http: HttpClient,
     private authService: AuthService,
@@ -85,6 +90,49 @@ export class UserLogin {
           text: err.error?.detail || 'Could not send OTP. Make sure your phone number is registered.'
         });
         this.isLoading = false;
+      }
+    });
+  }
+
+
+  openForgotPassword() {
+    this.showForgotModal = true;
+    this.forgotEmail = this.email || '';
+  }
+
+  closeForgotPassword() {
+    this.showForgotModal = false;
+    this.isSendingReset = false;
+  }
+
+  sendPasswordReset() {
+    if (!this.forgotEmail || !this.isValidEmail(this.forgotEmail)) {
+      Swal.fire({
+        icon: 'error',
+        title: 'Invalid Email',
+        text: 'Please enter a valid email address.'
+      });
+      return;
+    }
+
+    this.isSendingReset = true;
+    this.http.post<any>('http://127.0.0.1:8001/api/forgot-password', { email: this.forgotEmail }).subscribe({
+      next: (res) => {
+        this.isSendingReset = false;
+        Swal.fire({
+          icon: 'success',
+          title: 'Reset Link Sent',
+          text: res?.message || 'Check your email for the password reset link.'
+        });
+        this.closeForgotPassword();
+      },
+      error: (err) => {
+        this.isSendingReset = false;
+        Swal.fire({
+          icon: 'error',
+          title: 'Request Failed',
+          text: err.error?.detail || 'Could not send reset link. Please try again.'
+        });
       }
     });
   }

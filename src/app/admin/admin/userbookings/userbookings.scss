@@ -245,3 +245,35 @@ tr:hover {
 .cancel-btn:hover {
   background: #cbd5e1;
 }
+
+@media (max-width: 768px) {
+  .table-container {
+    width: 96%;
+    padding: var(--space-lg);
+    overflow-x: auto;
+  }
+
+  table {
+    min-width: 700px;
+  }
+
+  .modal-box {
+    width: min(92vw, 420px);
+    padding: var(--space-lg);
+  }
+
+  .btn-group {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .action-cell {
+    flex-wrap: wrap;
+  }
+}
+
+@media (max-width: 575.98px) {
+  .modal-box {
+    width: 94vw;
+  }
+}

@@ -10,10 +10,11 @@ import { BehaviorSubject, Subject } from 'rxjs';
 
 export class Hotelsdata{
   private apiUrl = environment.apiUrl;
+  private baseUrl = environment.apiUrl.replace(/\/api\/?$/, '');
 
   constructor(private http: HttpClient, private authService: AuthService) { }
 
-  addhotel(data: any) {
+  addhotel(data: FormData) {
     return this.http.post(`${this.apiUrl}/add-hotel`, data);
   }
 
@@ -25,7 +26,7 @@ export class Hotelsdata{
     return this.http.delete(`${this.apiUrl}/deletehotel/${id}`);
   }
 
-  updatehotel(id: string, data: any) {
+  updatehotel(id: string, data: FormData) {
     return this.http.put(`${this.apiUrl}/updatehotel/${id}`, data);
   }
 
@@ -34,4 +35,11 @@ export class Hotelsdata{
     `${this.apiUrl}/get-hotels`
   );
 }
+
+  resolveImageUrl(path: string) {
+    if (!path) return '';
+    if (/^https?:\/\//i.test(path) || path.startsWith('data:')) return path;
+    if (path.startsWith('/')) return `${this.baseUrl}${path}`;
+    return `${this.baseUrl}/${path}`;
+  }
 }

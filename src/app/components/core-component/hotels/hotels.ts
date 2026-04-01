@@ -47,7 +47,7 @@ export class Hotels {
   }
   openHotelModal(hotel: any) {
     this.selectedHotel = hotel;
-    this.mainImage = hotel.image_url;
+    this.mainImage = hotel.image_src;
   }
 
   getStars(rating: number): string[] {
@@ -71,9 +71,7 @@ export class Hotels {
         ...hotel,
         rating: hotel.rating || (Math.floor(Math.random() * 2) + 4) + (Math.random() > 0.5 ? 0.5 : 0), // Mock rating if missing
         reviews_count: Math.floor(Math.random() * 100) + 20, // Mock review count
-        image_url: hotel.image_url.startsWith('data')
-          ? hotel.image_url
-          : 'data:image/jpeg;base64,' + hotel.image_url
+        image_src: this.hotelService.resolveImageUrl(hotel.image_url)
       }));
       this.isloading = false;
     });

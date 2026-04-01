@@ -26,7 +26,7 @@
       @for (hotel of filteredHotels ; let idx = $index;track hotel ; ){
       <div class="col-md-4 mb-4 hotel-card-container">
         <div class=" hotel-card card">
-          <img [src]="hotel.image_url || 'assets/no-image.png'" class="card-img-top" />
+          <img [src]="hotel.image_src || 'assets/no-image.png'" class="card-img-top" />
           <div class="card-body">
             <h5 class="card-title">{{hotel.hotel_name}}</h5>
             <p class="card-text">{{hotel.location}}</p>
@@ -67,7 +67,7 @@
       <div class="modal-body p-0">
         <div class="row g-0">
           <div class="col-lg-6 position-relative">
-            <img [src]="selectedHotel?.image_url" class="modal-hero-img" alt="Hotel Image" />
+            <img [src]="selectedHotel?.image_src" class="modal-hero-img" alt="Hotel Image" />
             <div class="modal-img-overlay">
               <span class="badge bg-gold text-navy shadow-sm mb-2">Premium Hotels</span>
               <h2 class="text-white mb-0 h3">{{ selectedHotel?.hotel_name }}</h2>

@@ -6,7 +6,7 @@
 }
 
 
-<div class="main-content">
+<div class="main-content" [class.admin-offset]="authservice.isLoggedIn() && authservice.isAdmin()">
   <router-outlet></router-outlet>
 </div>
 

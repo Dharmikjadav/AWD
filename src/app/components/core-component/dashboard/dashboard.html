@@ -86,6 +86,81 @@
   </div>
 </section>
 
+
+<!-- ============================================
+     HOTELS PREVIEW
+     ============================================ -->
+<section class="preview-section section-padding">
+  <div class="container">
+    <div class="section-head">
+      <h2 class="section-title">Featured Hotels</h2>
+      <a routerLink="/hotels" class="section-link">View All Hotels <i class="bi bi-arrow-right"></i></a>
+    </div>
+    <div class="row g-4">
+      <div class="col-md-4" *ngFor="let hotel of hotelsPreview">
+        <div class="preview-card">
+          <img [src]="hotel.image_src || 'assets/no-image.png'" alt="Hotel" class="preview-img">
+          <div class="preview-body">
+            <h5>{{ hotel.hotel_name }}</h5>
+            <p><i class="bi bi-geo-alt"></i> {{ hotel.location }}</p>
+            <a routerLink="/hotels" class="btn btn-outline-secondary btn-sm">Explore</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================
+     PACKAGES PREVIEW
+     ============================================ -->
+<section class="preview-section section-padding alt">
+  <div class="container">
+    <div class="section-head">
+      <h2 class="section-title">Popular Packages</h2>
+      <a routerLink="/packages" class="section-link">View All Packages <i class="bi bi-arrow-right"></i></a>
+    </div>
+    <div class="row g-4">
+      <div class="col-md-4" *ngFor="let pkg of packagesPreview">
+        <div class="preview-card">
+          <div class="preview-body">
+            <h5>{{ pkg.package_name }}</h5>
+            <p>{{ pkg.description }}</p>
+            <div class="preview-meta">
+              <span><i class="bi bi-calendar-event"></i> {{ pkg.duration_days }} days</span>
+              <span><i class="bi bi-cash-coin"></i> ₹ {{ pkg.price }}</span>
+            </div>
+            <a [routerLink]="['/packages']" class="btn btn-outline-secondary btn-sm">Select</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================
+     FACILITIES PREVIEW
+     ============================================ -->
+<section class="preview-section section-padding">
+  <div class="container">
+    <div class="section-head">
+      <h2 class="section-title">Top Facilities</h2>
+      <a routerLink="/facilities" class="section-link">View All Facilities <i class="bi bi-arrow-right"></i></a>
+    </div>
+    <div class="row g-4">
+      <div class="col-md-4" *ngFor="let facility of facilitiesPreview">
+        <div class="preview-card">
+          <img [src]="facility.img" alt="Facility" class="preview-img">
+          <div class="preview-body">
+            <h5>{{ facility.title }}</h5>
+            <p>{{ facility.description }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- ============================================
      ROOM BOOKING SECTION
      ============================================ -->
